@@ -63,6 +63,7 @@ function can_view_scripts()
     // wp_enqueue_style('can_view-style', get_stylesheet_uri(), array(), _S_VERSION);
 
     wp_enqueue_style('style_global', get_template_directory_uri() . '/public/asset/dist/css/global.bundle.css', array(), _S_VERSION);
+    wp_enqueue_style('style_utilisateur', get_template_directory_uri() . '/public/asset/dist/css/utilisateur.bundle.css', array(), _S_VERSION);
 
 
 
