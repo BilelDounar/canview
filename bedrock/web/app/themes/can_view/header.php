@@ -35,7 +35,8 @@
                 <li><a href="">Mes candidatures</a></li>
             </ul>
             <div class="logo">
-                <a href=""><img src="<?= path() ?>/app/themes/can_view/asset/img/logo.png" alt="">
+                <a href="">
+                    <img src="<?= path() ?>/app/themes/can_view/asset/img/logo.png" alt="">
                 </a>
             </div>
             <ul class="right">
