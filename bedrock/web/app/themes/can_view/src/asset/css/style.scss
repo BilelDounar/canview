@@ -17,8 +17,8 @@ ol {
 }
 
 body {
-  background-color: #00A000;
-  color: darkslategray;
+  background-color: v.$bleu-primary;
+  font-family: v.$police-global;
 }
 
 a {
@@ -35,13 +35,14 @@ img {
 
 #masthead {
   background-color: v.$blanc;
-  margin: 1rem 0;
+  margin: 1rem 0.5rem;
   border-radius: 100px;
 
-  .wrap {
+  .wrap_header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    font-weight: bold;
 
     .left {
       display: flex;
@@ -49,7 +50,7 @@ img {
     }
 
     .logo {
-      max-width: 75px;
+      max-width: 175px;
     }
 
     .right {
