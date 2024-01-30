@@ -11,22 +11,24 @@
 
 ?>
 
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'can_view' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'can_view' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'can_view' ), 'can_view', '<a href="http://underscores.me/">Underscores.me</a>' );
-				?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
-</div><!-- #page -->
+<footer id="colophon">
+    <div class="logo">
+        <img src="<?= path() ?>/app/themes/can_view/asset/img/logo.png" alt="">
+    </div>
+    <div class="fine-print">
+        <ul>
+            <li>Main</li>
+            <li>Concept</li>
+            <li>Squad</li>
+        </ul>
+        <p>All rights reserved 2024</p>
+    </div>
+    <div class="social">
+        <img src="<?= path() ?>/app/themes/can_view/asset/img/twitter.svg" alt="">
+        <img src="<?= path() ?>/app/themes/can_view/asset/img/instagram.svg" alt="">
+        <img src="<?= path() ?>/app/themes/can_view/asset/img/linkedin.svg" alt="">
+    </div>
+</footer>
 
 <?php wp_footer(); ?>
 
