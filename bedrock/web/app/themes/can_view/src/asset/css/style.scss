@@ -1,0 +1,70 @@
+@use 'variable' as v;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+ul,
+ol {
+  list-style: none;
+}
+
+body {
+  background-color: #00A000;
+  color: darkslategray;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  vertical-align: bottom;
+}
+
+
+//HEADER
+
+#masthead {
+  background-color: v.$blanc;
+  margin: 1rem 0;
+  border-radius: 100px;
+
+  .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .left {
+      display: flex;
+      padding: 0 1rem;
+    }
+
+    .logo {
+      max-width: 75px;
+    }
+
+    .right {
+      display: flex;
+      padding: 0 1rem;
+    }
+
+    ul {
+      li {
+        padding: 0 1rem;
+
+        a {
+          color: v.$noir;
+        }
+      }
+    }
+  }
+}

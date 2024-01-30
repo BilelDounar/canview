@@ -1,0 +1,8 @@
+.DS_Store
+.idea/
+composer.phar
+package-lock.json
+node_modules/
+vendor/
+dist/
+inc/core/pdo.php
