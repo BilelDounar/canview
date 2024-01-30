@@ -59,11 +59,12 @@ add_action('widgets_init', 'can_view_widgets_init');
  */
 function can_view_scripts()
 {
-
-    // wp_enqueue_style('can_view-style', get_stylesheet_uri(), array(), _S_VERSION);
-
+    //Style
     wp_enqueue_style('style_global', get_template_directory_uri() . '/public/asset/dist/css/global.bundle.css', array(), _S_VERSION);
+    wp_enqueue_style('style_all_form', get_template_directory_uri() . '/public/asset/dist/css/allform.bundle.css', array(), _S_VERSION);
 
+    //JS
+    wp_enqueue_script('index-js', get_template_directory_uri() . '/asset/js/index.js', array(), _S_VERSION, false);
 
 
     ///////////////////
