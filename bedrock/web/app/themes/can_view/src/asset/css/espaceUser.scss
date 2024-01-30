@@ -1,0 +1,84 @@
+@use 'variable' as v;
+#espaceUser{
+  .espace{
+    width: 100%;
+    background-color: white;
+    border-radius:10px;
+    padding: 5rem;
+
+    h1{
+      font-size: 25px;
+      color: black;
+      span{
+        color: v.$bleu-primary;
+      }
+    }
+    .separator{
+      height: 2px;
+      width: 100%;
+      margin: 1rem auto;
+      border-top: dashed v.$bleu-form 3px;
+    }
+    .profil{
+      display: flex;
+      justify-content: space-between;
+      .photoProfil{
+        width: 600px;
+        .photo{
+          width: 65%;
+          margin: 0 auto;
+        }
+      }
+      .content{
+        width: 50%;
+        .info{
+          font-size: 24px;
+          padding: 0 1rem 1rem;
+          p{
+            color: black;
+            padding: 0.5rem;
+            span{
+              color: v.$bleu-form;
+            }
+          }
+        }
+        .action{
+          ul{
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            width: 100%;
+
+            li{
+              width: 49%;
+              text-align: center;
+              display: flex;
+              justify-content: center;
+              margin-bottom:0.8rem;
+
+              a {
+                font-size: 20px;
+                border: solid 2px v.$bleu-form;
+                width: 100%;
+                padding: 1rem;
+                background-color: v.$bleu-form;
+                color: white;
+                border-radius: 10px;
+                transition:all 0.3s ;
+              }
+              a:hover{
+                border: solid 2px black;
+                background-color: white;
+                color: v.$bleu-form;
+              }
+              .supprime{
+                border: solid 2px v.$rouge;
+                  background-color: v.$rouge;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
