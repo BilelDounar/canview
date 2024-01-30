@@ -8,7 +8,6 @@
  *
  * @package can_view
  */
-
 ?>
 
 <footer id="colophon">

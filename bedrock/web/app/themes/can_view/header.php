@@ -26,7 +26,9 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
+
 <header id="masthead">
+
     <nav class="wrap">
         <ul class="left">
             <li><a href="">Déposer mon CV</a></li>
