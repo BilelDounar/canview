@@ -15,22 +15,22 @@ get_header();
                 <a href="#">Créer mon CV</a>
             </div>
             <div class="right_content">
-<!--                <div class="flexslider">-->
-<!--                    <ul class="slides">-->
-<!--                        <li>-->
-<!--                            <img src="--><?php //echo asset('img/image_diapo1.jpg')?><!--" />-->
-<!--                        </li>-->
-<!--                        <li>-->
-<!--                            <img src="--><?php //echo asset('img/image_diapo2.jpg')?><!--" />-->
-<!--                        </li>-->
-<!--                        <li>-->
-<!--                            <img src="--><?php //echo asset('img/image_diapo1.jpg')?><!--" />-->
-<!--                        </li>-->
-<!--                        <li>-->
-<!--                            <img src="--><?php //echo asset('img/image_diapo2.jpg')?><!--" />-->
-<!--                        </li>-->
-<!--                    </ul>-->
-<!--                </div>-->
+                <div class="flexslider">
+                    <ul class="slides">
+                        <li>
+                            <img src="<?php echo asset('img/image_diapo1.jpg')?>" />
+                        </li>
+                        <li>
+                            <img src="<?php echo asset('img/image_diapo1.jpg')?>" />
+                        </li>
+                        <li>
+                            <img src="<?php echo asset('img/image_diapo1.jpg')?>" />
+                        </li>
+                        <li>
+                            <img src="<?php echo asset('img/image_diapo1.jpg')?>" />
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div class="separator"></div>
         </div>

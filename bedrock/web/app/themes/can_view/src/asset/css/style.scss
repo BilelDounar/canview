@@ -11,13 +11,14 @@ html {
 }
 
 
+
 ul,
 ol {
   list-style: none;
 }
 
 body {
-  background-color: #00A000;
+  background-color: v.$bleu-primary;
   color: darkslategray;
 }
 
@@ -66,5 +67,45 @@ img {
         }
       }
     }
+  }
+}
+////////////////////
+/// HOMEPAGE
+/////////////////////
+
+#intro{
+  background: linear-gradient(v.$bleu-primary, v.$blanc);
+
+  .wrap{
+    max-width: 1300px;
+    width:100%;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+
+    .left_content{
+
+    }
+    .right_content{
+      background-color: lime;
+
+
+      .flexslider{
+        width: 620px;
+
+
+        .slides{
+
+          li{
+            img{
+              border-radius: 5px;
+            }
+          }
+        }
+
+      }
+    }
+
   }
 }
