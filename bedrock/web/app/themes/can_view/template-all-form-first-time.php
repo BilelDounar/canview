@@ -64,33 +64,33 @@ include('header.php');
     </div>
 </section>
 
-<?php debug($_POST) ?>
+
 
 <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/dotPulse.js"></script>
 <script>
     var signin = document.querySelector('#signin_button');
     var premiere_etape = document.querySelector('.premiere_etape');
     var deuxieme_etape = document.querySelector('.deuxieme_etape');
-    var troisieme_etape = document.querySelector('.troisieme_etape');
     var loader_etape = document.querySelector('.loader_etape');
+
+    const errors = <?= json_encode($errors); ?>;
+    console.log(errors);
 
     signin.addEventListener('click', function(e) {
         e.preventDefault();
 
-        
-        premiere_etape.style.display = "none"
-
-        setTimeout(() => {
-            loader_etape.style.display = "block"
-
+        if (errors.length <= 0) {
+            console.log(errors);
+            premiere_etape.style.display = "none";
 
             setTimeout(() => {
-                loader_etape.style.display = "none"
-                deuxieme_etape.style.display = "block"
-            }, 1000);
-        }, 100);
+                loader_etape.style.display = "block";
 
-
-
+                setTimeout(() => {
+                    loader_etape.style.display = "none";
+                    deuxieme_etape.style.display = "block";
+                }, 1000);
+            }, 100);
+        }
     });
 </script>

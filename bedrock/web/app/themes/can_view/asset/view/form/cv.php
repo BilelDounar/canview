@@ -5,6 +5,7 @@
     <div class="all_form_title">
         <h2>Créez votre CV</h2>
     </div>
+    <form action="" method="post">
     <div class="padd_cv">
         <div class="inline_form ">
             <div class="coolinput ">
@@ -34,7 +35,7 @@
             <div class="inline_check">
                 <div class=""><span>Permis</span></div>
                 <label class="switch"><span class="choix">Oui</span>
-                    <input type="checkbox">
+                    <input type="checkbox" id="permis" name="permis" checked>
                     <span class="slider"></span>
                     <span class="choix">Non</span>
                 </label>
@@ -57,7 +58,7 @@
                 <div class="coolinput box_datalist">
                     <label for="searchInput" class="text">Langues :</label>
                     <div class="box_datalist">
-                        <input type="text" id="searchInputLangues" class="searchInput" list="optionsListLangues">
+                        <input type="text" id="searchInputLangues" name="langues" id="langues" class="searchInput" list="optionsListLangues">
 
                         <datalist id="optionsListLangues">
                             <option value="Option 1">
@@ -85,7 +86,7 @@
                 <div class="coolinput box_datalist">
                     <label for="searchInput" class="text">Compétences :</label>
                     <div class="box_datalist">
-                        <input type="text" id="searchInputCompetences" class="searchInput" list="optionsListCompetences">
+                        <input type="text" id="searchInputCompetences" name="competences" id="competences" class="searchInput" list="optionsListCompetences">
 
                         <datalist id="optionsListCompetences">
                             <option value="Option 1">
@@ -116,10 +117,34 @@
             <div class="coolinput box_form ">
                 <label for="photo" class="text box_title">Votre Photo</label>
                 <div class="box_datalist">
-                    <input type="file" class="input-file" accept="image/jpg, image/png, image/jpeg">
-                    <p class="browse"><strong>Formats supportés :</strong> avi, flv, mp4, m4v, mkv, mov, mpg, mpeg, ogg, ogv, wmv, 3gp, 3g2.</p>
+                    <input type="file" class="input-file" name="photo" id="photo" accept="image/jpg, image/png, image/jpeg">
+                    <p class="browse"><strong>Formats supportés :</strong> competences_hardpng, .jpg, .jpeg.</p>
 
                 </div>
+            </div>
+        </div>
+        <div class="inline_form ">
+            <div class="coolinput box_form ">
+                <label for="motivations" class="text box_title">Vos Compétences Techniques</label>
+                <div class="coolinput box_datalist">
+                    <label for="searchInput" class="text">Compétences Techniques :</label>
+                    <div class="box_datalist">
+                        <input type="text" id="searchInputCompetences" name="competences_hard" id="competences_hard" class="searchInput">
+                        <div class="container_button_cv">
+                            <a href="#" id="addCompetences" class="input button_add">Ajouter</a>
+
+                        </div>
+                        <hr class="dashed_hr">
+                        <div class="box_info_added">
+                            <span>Text 1</span>
+                            <div class="">
+                                <hr class="dashed_hr">
+                                <a href=""><i class="fa-solid fa-trash-can"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
@@ -130,14 +155,54 @@
                 <div class="coolinput box_datalist">
                     <label for="searchInput" class="text">Expériences :</label>
                     <div class="box_datalist">
-                        <input type="text" id="searchInputCompetences" class="searchInput" list="optionsListCompetences">
+                        <input type="text" id="searchInputCompetences" name="formation" id="formation" class="searchInput">
 
-                        <datalist id="optionsListCompetences">
-                            <option value="Option 1">
-                            <option value="Option 2">
-                            <option value="Option 3">
-                            <option value="Option 4">
-                        </datalist>
+                        <div class="container_button_cv">
+                            <a href="#" id="" class="input button_add">Ajouter</a>
+                        </div>
+                        <hr class="dashed_hr">
+                        <div class="box_info_added">
+                            <span>Text 1</span>
+                            <div class="">
+                                <hr class="dashed_hr">
+                                <a href=""><i class="fa-solid fa-trash-can"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="inline_form ">
+            <div class="coolinput box_form ">
+                <label for="motivations" class="text box_title">Vos Formations</label>
+                <div class="coolinput box_datalist">
+                    <label for="searchInput" class="text">Formations :</label>
+                    <div class="box_datalist">
+                        <input type="text" id="searchInputCompetences" name="formation" id="formation" class="searchInput">
+
+                        <div class="container_button_cv">
+                            <a href="#" id="" class="input button_add">Ajouter</a>
+                        </div>
+                        <hr class="dashed_hr">
+                        <div class="box_info_added">
+                            <span>Text 1</span>
+                            <div class="">
+                                <hr class="dashed_hr">
+                                <a href=""><i class="fa-solid fa-trash-can"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="inline_form ">
+            <div class="coolinput box_form ">
+                <label for="motivations" class="text box_title">Vos Loisirs</label>
+                <div class="coolinput box_datalist">
+                    <label for="searchInput" class="text">Loisirs :</label>
+                    <div class="box_datalist">
+                        <input type="text" id="searchInputCompetences" name="loisirs" id="loisirs" class="searchInput">
+
                         <div class="container_button_cv">
                             <a href="#" id="" class="input button_add">Ajouter</a>
                         </div>
@@ -156,6 +221,7 @@
         <div class="inline_form ">
             <button id="submitted" class="input button_add">Envoyer</button>
         </div>
+
     </div>
     </form>
 </section>
