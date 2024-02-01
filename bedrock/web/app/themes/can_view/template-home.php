@@ -3,6 +3,7 @@
  * Template Name: Homepage
  */
 
+require_once 'functions.php';
 
 global $metaHome;
 get_header();
@@ -55,7 +56,7 @@ get_header();
                 <div class="infos">
                     <div class="info_1">
                         <div class="titre">
-                            <h2>+ 2000</h2>
+                            <h2>+ de 2000</h2>
                         </div>
                         <div class="texte">
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
@@ -64,7 +65,9 @@ get_header();
                     <div class="info_2">
                         <div class="titre">
                             <h2>Lorem ipsum dolor sit amet</h2>
-                            <img src="<?php echo asset('img/file-alt.svg') ?>" alt="icon cv">
+                            <div class="icon">
+                                <img src="<?php echo asset('img/file-alt.svg') ?>" alt="icon cv">
+                            </div>
                         </div>
                         <div class="texte">
                             <a href="">Déposez votre CV</a>
@@ -75,11 +78,15 @@ get_header();
                         </div>
                         <div class="texte">
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        </div></div>
+                        </div>
+                    </div>
                     <div class="info_4">
                         <div class="titre">
                             <h2>Lorem ipsum dolor sit amet</h2>
-                            <img src="<?php echo asset('img/bell.svg') ?>" alt="icon cloche">
+                            <div class="icon">
+                                <img src="<?php echo asset('img/bell.svg') ?>" alt="icon cloche">
+
+                            </div>
                         </div>
                         <div class="texte">
                             <a href="#">Lorem ipsum</a>
@@ -101,7 +108,7 @@ get_header();
                 <div class="onglets">
                     <div class="onglet_1">
                         <div class="image">
-                            <img src="<?php echo asset('img/img_onglet1.png') ?>" alt="">
+                            <?php echo getImageById(web_r($metaHome, 'image_1'), 'img_etape_config'); ?>
                             <p>Etape 1</p>
                         </div>
                         <div class="titre">
@@ -111,8 +118,8 @@ get_header();
                     </div>
                     <div class="onglet_2">
                         <div class="image">
-                            <img src="<?php echo asset('img/img_onglet2.png') ?>" alt="">
-                            <p>Etape 1</p>
+                            <?php echo getImageById(web_r($metaHome, 'image_2'), 'img_etape_config'); ?>
+                            <p>Etape 2</p>
                         </div>
                         <div class="titre">
                             <h3>Inscrivez-vous</h3>
@@ -121,8 +128,8 @@ get_header();
                     </div>
                     <div class="onglet_3">
                         <div class="image">
-                            <img src="<?php echo asset('img/img_onglet3.png') ?>" alt="">
-                            <p>Etape 1</p>
+                            <?php echo getImageById(web_r($metaHome, 'image_3'), 'img_etape_config'); ?>
+                            <p>Etape 3</p>
                         </div>
                         <div class="titre">
                             <h3>Inscrivez-vous</h3>
@@ -136,6 +143,7 @@ get_header();
         </div>
     </section>
 <section id="qui_somme_nous">
+    <div class="transition"></div>
     <div class="wrap">
         <div class="content">
             <div class="titles">
