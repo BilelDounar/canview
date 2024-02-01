@@ -62,9 +62,11 @@ function can_view_scripts()
     //Style
     wp_enqueue_style('style_global', get_template_directory_uri() . '/public/asset/dist/css/global.bundle.css', array(), _S_VERSION);
     wp_enqueue_style('style_all_form', get_template_directory_uri() . '/public/asset/dist/css/allform.bundle.css', array(), _S_VERSION);
+    wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css', array(), _S_VERSION);
 
     //JS
     wp_enqueue_script('index-js', get_template_directory_uri() . '/asset/js/index.js', array(), _S_VERSION, false);
+
 
 
     ///////////////////
