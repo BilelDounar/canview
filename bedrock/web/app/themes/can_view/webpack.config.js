@@ -7,6 +7,7 @@ module.exports = {
     entry: {
         global: './src/index.js',
         utilisateur: './src/index.js',
+        recruteur: './src/index.js',
 
     },
     output: {

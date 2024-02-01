@@ -67,13 +67,16 @@
                 transition:all 0.3s ;
               }
               a:hover{
-                border: solid 2px black;
                 background-color: white;
                 color: v.$bleu-form;
               }
               .supprime{
                 border: solid 2px v.$rouge;
-                  background-color: v.$rouge;
+                background-color: v.$rouge;
+              }
+              .supprime:hover{
+                background-color: white;
+                color: v.$rouge;
               }
             }
           }

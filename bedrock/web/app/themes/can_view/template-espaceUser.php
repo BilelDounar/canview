@@ -12,7 +12,7 @@ get_header();
                 <div class="profil">
                     <div class="photoProfil">
                         <div class="photo">
-                            <img src="" alt="">
+                            <img src="<?php echo asset('img/photo_profil.jpg') ?>" alt="">
                         </div>
                     </div>
                     <div class="content">
