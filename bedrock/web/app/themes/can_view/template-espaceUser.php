@@ -2,6 +2,7 @@
 /**
  * Template Name: EspaceCandidat
  */
+
 get_header();
 ?>
     <section id="espaceUser">
@@ -24,7 +25,7 @@ get_header();
                         <div class="action">
                             <ul>
                                 <li><a class="voir" href="">Voir le CV</a></li>
-                                <li><a class="telecharge" href="">Télécharger le CV</a></li>
+                                <li><a class="telecharge" href="<?php echo path('app/themes/can_view/template-pdf.php') ?>">Télécharger le CV</a></li>
                                 <li><a class="modif" href="">Modifier le CV</a></li>
                                 <li><a class="supprime" href="">Supprimer le CV</a></li>
                             </ul>
