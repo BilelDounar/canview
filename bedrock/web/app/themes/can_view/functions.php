@@ -10,4 +10,4 @@ require get_template_directory() . '/inc/extra/template-functions.php';
 
 // request global
 global $metaHome;
-$metaHome = get_post_meta(17);
+$metaHome = get_post_meta(6);

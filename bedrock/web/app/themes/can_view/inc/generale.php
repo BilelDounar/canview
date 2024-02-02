@@ -72,5 +72,13 @@ function can_view_scripts()
     // jQuery
     wp_deregister_script('jquery');
     wp_enqueue_script('jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js', array(), _S_VERSION, true);
+
+    ////////////////////////////
+    /// flexslider
+
+    if(is_page_template('template-home.php')) {
+        wp_enqueue_script('flexslider-js', get_template_directory_uri() . '/asset/flexslider/jquery.flexslider-min.js', array(),_S_VERSION, true);
+        wp_enqueue_script('home-js', get_template_directory_uri() . '/asset/js/home.js', array(),_S_VERSION, true);
+    }
 }
 add_action('wp_enqueue_scripts', 'can_view_scripts');
