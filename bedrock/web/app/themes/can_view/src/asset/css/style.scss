@@ -261,9 +261,9 @@ img {
               font-size: 17px;
             }
             a:hover{
-              background-color: v.$blanc;
-              color: v.$noir;
-              transition: 1s;
+              background-color: #3A7B4B;
+              border: solid 2px #3A7B4B;
+
 
             }
           }
@@ -333,9 +333,9 @@ img {
               font-size: 17px;
             }
             a:hover{
-              background-color: v.$blanc;
-              color: v.$noir;
-              transition: 1s;
+              background-color: #F4B72C;
+              border: solid 2px #F4B72C;
+
 
 
             }
@@ -388,6 +388,7 @@ img {
         gap: 1rem;
 
         .onglet_1{
+          width: 360px;
           .image{
             img{
               border-radius: 15px;
@@ -398,7 +399,7 @@ img {
               justify-content: center;
               align-items: center;
               color: #08BCA9;
-              padding: 1rem 0;
+              padding: 1rem 0 ;
             }
           }
           .titre{
@@ -411,14 +412,21 @@ img {
             h3{
               font-size: 22px;
               color: #51826A;
+              text-align: center;
+              padding:  0 1rem;
+
             }
             p{
               font-size: 14px;
               color: v.$noir;
+              text-align: center;
+              padding:  0 1rem;
             }
           }
         }
         .onglet_2{
+          width: 360px;
+
           .image{
             img{
               border-radius: 15px;
@@ -442,15 +450,21 @@ img {
             h3{
               font-size: 22px;
               color: #51826A;
+              text-align: center;
+              padding:  0 1rem;
+
             }
             p{
               font-size: 14px;
               color: v.$noir;
+              text-align: center;
+              padding:  0 1rem;
             }
           }
 
         }
         .onglet_3{
+          width: 360px;
           .image{
             img{
               border-radius: 15px;
@@ -475,10 +489,14 @@ img {
             h3{
               font-size: 22px;
               color: #51826A;
+              text-align: center;
+              padding:  0 1rem;
             }
             p{
               font-size: 14px;
               color: v.$noir;
+              text-align: center;
+              padding:  0 1rem;
             }
           }
         }
@@ -554,17 +572,33 @@ img {
 
     .content{
       display: flex;
-      flex-direction: column;
-      width: 50%;
+      align-items: center;
 
-      .logo{
-        padding-bottom: 5rem;
-        img{
-          filter: drop-shadow(0px 3px 4px v.$noir);
-          width: 75%;
+      .left_content{
+        width: 50%;
 
+      }
+      .right_content{
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        align-items: center;
+
+        .logo{
+          padding-bottom: 5rem;
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+
+          img{
+            filter: drop-shadow(0px 3px 4px v.$noir);
+            width: 75%;
+
+          }
         }
       }
+
+
 
       .texte{
         display: flex;
@@ -576,10 +610,13 @@ img {
           font-size: 51px;
           color: v.$blanc;
           text-shadow: 3px 2px 0 v.$noir;
+          text-align: center;
         }
         p{
           font-size: 21px;
           color: v.$noir;
+          text-align: center;
+
         }
       }
       .download{
@@ -722,8 +759,13 @@ img {
   #mobile{
     .wrap{
       .content{
-        width: 100%;
-
+        .left_content{
+          display: none;
+          width: 0%;
+        }
+        .right_content{
+          width: 100%;
+        }
       }
     }
   }
@@ -780,7 +822,7 @@ img {
   }
 
 }
-@media screen and (max-width: 375px){
+@media screen and (max-width: 380px){
   #intro{
     .wrap{
       .content {
@@ -789,6 +831,17 @@ img {
             a{
               padding: 1rem 5rem;
             }
+          }
+        }
+      }
+    }
+  }
+  #mobile{
+    .wrap{
+      .content{
+        .right_content{
+          .download{
+            flex-direction: column;
           }
         }
       }

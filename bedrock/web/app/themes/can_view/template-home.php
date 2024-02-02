@@ -52,8 +52,8 @@ get_header();
         <div class="wrap">
             <div class="content">
                 <div class="titles">
-                    <h1>Lorem ipsum dolor</h1>
-                    <h3>Lorem ipsum dolor sit amet</h3>
+                    <h1>Les chiffres clés</h1>
+                    <h3>Des statistiques qui parlent</h3>
                 </div>
                 <div class="infos">
                     <div class="info_1">
@@ -61,12 +61,12 @@ get_header();
                             <h2>+ de 2000</h2>
                         </div>
                         <div class="texte">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <p>Professionnels ont déjà trouvé leur opportunité grâce à nous.</p>
                         </div>
                     </div>
                     <div class="info_2">
                         <div class="titre">
-                            <h2>Lorem ipsum dolor sit amet</h2>
+                            <h2>Enregistrez votre CV dès maintenant!</h2>
                             <div class="icon">
                                 <img src="<?php echo asset('img/file-alt.svg') ?>" alt="icon cv">
                             </div>
@@ -79,19 +79,19 @@ get_header();
                             <h2>50 000</h2>
                         </div>
                         <div class="texte">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <p>Postes à pourvoir dans notre réseau de recrutement.</p>
                         </div>
                     </div>
                     <div class="info_4">
                         <div class="titre">
-                            <h2>Lorem ipsum dolor sit amet</h2>
+                            <h2>Recevez des alertes sur les opportunités</h2>
                             <div class="icon">
                                 <img src="<?php echo asset('img/bell.svg') ?>" alt="icon cloche">
 
                             </div>
                         </div>
                         <div class="texte">
-                            <a href="#">Lorem ipsum</a>
+                            <a href="#">Notifications</a>
                         </div>
                     </div>
                 </div>
@@ -115,7 +115,7 @@ get_header();
                         </div>
                         <div class="titre">
                             <h3>Inscrivez-vous</h3>
-                            <p>Add your contact and personal details</p>
+                            <p>Créez-vous un compte en renseignant vos moyens de contact</p>
                         </div>
                     </div>
                     <div class="onglet_2">
@@ -124,8 +124,8 @@ get_header();
                             <p>Etape 2</p>
                         </div>
                         <div class="titre">
-                            <h3>Inscrivez-vous</h3>
-                            <p>Add your contact and personal details</p>
+                            <h3>Créez votre CV</h3>
+                            <p>Remplissez le formulaire avec vos compétences et expériences</p>
                         </div>
                     </div>
                     <div class="onglet_3">
@@ -134,8 +134,8 @@ get_header();
                             <p>Etape 3</p>
                         </div>
                         <div class="titre">
-                            <h3>Inscrivez-vous</h3>
-                            <p>Add your contact and personal details</p>
+                            <h3>Envoyez-le</h3>
+                            <p>Envoyez votre cv à notre agence et recevez une propositions d'emploie sous 48h !</p>
                         </div>
                     </div>
                 </div>
@@ -162,17 +162,23 @@ get_header();
 <section id="mobile">
     <div class="wrap">
         <div class="content">
-            <div class="logo">
-                <img src="<?php echo asset('img/logo.png') ?>" alt="logo canview">
+            <div class="left_content">
+                <img src="<?php echo asset('img/telephone.png') ?>" alt="téléphone">
             </div>
-            <div class="texte">
-                <h1>Bientôt...</h1>
-                <p>Retrouver Can View sur toutes vos plateformes bientôt</p>
+            <div class="right_content">
+                <div class="logo">
+                    <img src="<?php echo asset('img/logo.png') ?>" alt="logo canview">
+                </div>
+                <div class="texte">
+                    <h1>Bientôt...</h1>
+                    <p>Retrouver Can View sur toutes vos plateformes bientôt</p>
+                </div>
+                <div class="download">
+                    <a class="apple" href="https://www.apple.com/fr/app-store/"><img src="<?php echo asset('img/app-store-badge.svg') ?>" alt="logo apple"></a>
+                    <a class="google" href="https://play.google.com/store/"><img src="<?php echo asset('img/google-play-badge.png') ?>" alt="logo google"></a>
+                </div>
             </div>
-            <div class="download">
-                <a class="apple" href="https://www.apple.com/fr/app-store/"><img src="<?php echo asset('img/app-store-badge.svg') ?>" alt="logo apple"></a>
-                <a class="google" href="https://play.google.com/store/"><img src="<?php echo asset('img/google-play-badge.png') ?>" alt="logo google"></a>
-            </div>
+
         </div>
     </div>
 
