@@ -267,3 +267,16 @@ img {
     }
   }
 }
+
+@media screen and (max-width: 600px) {
+  #colophon {
+    flex-direction: column;
+    gap: 1rem;
+    div{
+      border-bottom: 2px solid v.$bleu-primary;
+    }
+    .social{
+      border: none;
+    }
+  }
+}
