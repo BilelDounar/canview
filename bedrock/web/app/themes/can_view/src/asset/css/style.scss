@@ -93,7 +93,7 @@ img {
 
 
 #intro{
-  padding: 1rem 0;
+  padding: 1rem ;
   background: linear-gradient(v.$bleu-primary, v.$blanc);
 
   .wrap{
@@ -118,11 +118,13 @@ img {
           h1{
             font-size: 67px;
             color: v.$blanc;
+            text-align: center;
           }
 
           p{
             color: v.$noir;
             font-size: 22px;
+            text-align: center;
           }
         }
 
@@ -167,7 +169,7 @@ img {
   }
 }
 #statistics{
-  padding: 1rem 0;
+  padding: 1rem ;
   background: v.$blanc;
   .wrap {
     display: flex;
@@ -238,6 +240,7 @@ img {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 1rem;
             h2{
               font-size : 20px;
               color: v.$noir;
@@ -307,6 +310,7 @@ img {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 1rem;
             h2{
               font-size : 20px;
               color: v.$noir;
@@ -352,7 +356,7 @@ img {
   }
 }
 #configuration {
-  padding: 1rem 0;
+  padding: 1rem ;
   background: v.$blanc;
   .wrap{
     display: flex;
@@ -491,7 +495,7 @@ img {
 
 #qui_somme_nous{
   .transition{
-    padding: 5rem 0;
+    padding: 5rem 1rem;
     background: linear-gradient(v.$blanc, v.$bleu-primary);
   }
   .wrap{
@@ -536,7 +540,7 @@ img {
   }
 }
 #mobile{
-  padding: 15rem 0;
+  padding: 15rem 1rem;
   .wrap{
     display: flex;
     justify-content: flex-end;
@@ -622,6 +626,120 @@ img {
 
     img {
       max-width: 30px;
+    }
+  }
+}
+
+
+/* responsive HOMEPAGE*/
+
+@media screen and (max-width: 1130px){
+  #intro{
+    .wrap{
+      .content {
+        align-items: center;
+        flex-direction: column;
+        gap: 3rem;
+        .left_content {
+          width: 100%;
+          align-items: center;
+
+          .texte{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            h1{
+            }
+
+            p{
+            }
+          }
+        }
+      }
+    }
+  }
+  #statistics{
+    .wrap{
+      .content {
+        .infos{
+          flex-wrap: wrap;
+          gap: 20px;
+          .info_1{
+            width: calc(50% - 20px);
+          }
+          .info_2{
+            width: calc(50% - 20px);
+          }
+          .info_3{
+            width: calc(50% - 20px);
+          }
+          .info_4{
+            width: calc(50% - 20px);
+          }
+
+
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 660px){
+  #intro{
+    .wrap{
+      .content {
+        .right_content{
+          display: none;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 591px){
+  #statistics{
+    .wrap{
+      .content {
+        .infos{
+          flex-wrap: nowrap;
+          gap: 20px;
+          flex-direction: column;
+          align-items: center;
+          .info_1{
+            width: 100%;
+
+          }
+          .info_2{
+            width: 100%;
+
+          }
+          .info_3{
+            width: 100%;
+
+          }
+          .info_4{
+            width: 100%;
+
+          }
+
+
+        }
+      }
+    }
+  }
+
+}
+@media screen and (max-width: 375px){
+  #intro{
+    .wrap{
+      .content {
+        .left_content{
+          .btn{
+            a{
+              padding: 1rem 5rem;
+            }
+          }
+        }
+      }
     }
   }
 }
