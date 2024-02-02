@@ -118,13 +118,10 @@ img {
           h1{
             font-size: 67px;
             color: v.$blanc;
-            text-align: center;
           }
-
           p{
             color: v.$noir;
             font-size: 22px;
-            text-align: center;
           }
         }
 
@@ -376,8 +373,10 @@ img {
         h1{
           font-size: 51px;
           color: v.$vert-fonce;
+          text-align: center;
         }
         p{
+          text-align: center;
           font-size: 22px;
           color: #469F5D;
         }
@@ -385,7 +384,8 @@ img {
       .onglets{
         width: 100%;
         display: flex;
-        justify-content: space-between;
+        justify-content: space-evenly;
+        gap: 1rem;
 
         .onglet_1{
           .image{
@@ -518,14 +518,20 @@ img {
         h1{
           font-size: 51px;
           color: v.$blanc;
+          text-align: center;
         }
 
         p{
           font-size: 14px;
           color: #469F5D;
+          text-align: center;
+
         }
       }
       .video{
+        display: flex;
+        justify-content: center;
+        align-items: center;
         iframe{
           border-radius: 15px;
         }
@@ -540,7 +546,7 @@ img {
   }
 }
 #mobile{
-  padding: 15rem 1rem;
+  padding: 10rem 1rem;
   .wrap{
     display: flex;
     justify-content: flex-end;
@@ -650,9 +656,11 @@ img {
             align-items: center;
 
             h1{
+              text-align: center;
             }
 
             p{
+              text-align: center;
             }
           }
         }
@@ -664,7 +672,7 @@ img {
       .content {
         .infos{
           flex-wrap: wrap;
-          gap: 20px;
+          gap: 1rem;
           .info_1{
             width: calc(50% - 20px);
           }
@@ -679,6 +687,56 @@ img {
           }
 
 
+        }
+      }
+    }
+  }
+}
+#configuration{
+  .wrap{
+    .content{
+
+      .onglets{
+        flex-wrap: wrap;
+        gap: 3rem;
+      }
+
+    }
+  }
+}
+@media screen and (max-width: 1060px){
+  #qui_somme_nous{
+    .wrap{
+      .content{
+        .video{
+          iframe{
+            width: 700px;
+            height: 378px;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 800px){
+  #mobile{
+    .wrap{
+      .content{
+        width: 100%;
+
+      }
+    }
+  }
+}
+@media screen and (max-width: 750px){
+  #qui_somme_nous{
+    .wrap{
+      .content{
+        .video{
+          iframe{
+            width: 310px;
+            height: 167px;
+          }
         }
       }
     }
@@ -706,22 +764,16 @@ img {
           align-items: center;
           .info_1{
             width: 100%;
-
           }
           .info_2{
             width: 100%;
-
           }
           .info_3{
             width: 100%;
-
           }
           .info_4{
             width: 100%;
-
           }
-
-
         }
       }
     }
