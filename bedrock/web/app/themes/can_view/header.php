@@ -29,17 +29,22 @@
     <?php wp_body_open(); ?>
 
     <header id="masthead">
-        <nav class="wrap_header">
-            <ul class="left">
-                <li><a href="">Déposer mon CV</a></li>
-                <li><a href="">Mes candidatures</a></li>
-            </ul>
+        <nav class="top-nav wraphead">
+
             <div class="logo">
                 <a href="">
                     <img src="<?= path() ?>/app/themes/can_view/asset/img/logo.png" alt="">
                 </a>
             </div>
-            <ul class="right">
+
+            <input id="menu-toggle" type="checkbox" />
+            <label class='menu-button-container' for="menu-toggle">
+                <div class='menu-button'></div>
+            </label>
+
+            <ul class="menu">
+                <li><a href="">Déposer mon CV</a></li>
+                <li><a href="">Mes candidatures</a></li>
                 <li><a href="">Inscription</a></li>
                 <li><a href="">Connexion</a></li>
                 <li><a href="">Mon compte</a></li>
