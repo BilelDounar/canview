@@ -254,9 +254,17 @@ img {
               display: flex;
               justify-content: center;
               background-color: v.$noir;
-              padding: 1rem 2rem;
+              padding: 1rem ;
               border-radius: 90px;
+              border: solid 2px v.$noir;
               color: v.$blanc;
+              font-size: 17px;
+            }
+            a:hover{
+              background-color: v.$blanc;
+              color: v.$noir;
+              transition: 1s;
+
             }
           }
 
@@ -317,9 +325,18 @@ img {
               display: flex;
               justify-content: center;
               background-color: v.$noir;
-              padding: 1rem 2rem;
+              padding: 1rem;
               border-radius: 90px;
+              border: solid 2px v.$noir;
               color: v.$blanc;
+              font-size: 17px;
+            }
+            a:hover{
+              background-color: v.$blanc;
+              color: v.$noir;
+              transition: 1s;
+
+
             }
           }
         }

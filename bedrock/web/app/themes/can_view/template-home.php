@@ -23,21 +23,23 @@ get_header();
 
                 </div>
                 <div class="right_content">
+                    <?php
+                    $args = array(
+                        'post_type'      => 'diapo',
+                        'posts_per_page' => 4
+                    );
+                    $the_query = new WP_Query( $args );
+                    ?>
 
                     <div class="flexslider">
                         <ul class="slides">
-                            <li>
-                                <img src="<?php echo asset('img/image_diapo1.jpg')?>" />
-                            </li>
-                            <li>
-                                <img src="<?php echo asset('img/image_diapo1.jpg')?>" />
-                            </li>
-                            <li>
-                                <img src="<?php echo asset('img/image_diapo1.jpg')?>" />
-                            </li>
-                            <li>
-                                <img src="<?php echo asset('img/image_diapo1.jpg')?>" />
-                            </li>
+                            <?php if ( $the_query->have_posts() ) {
+                                while ( $the_query->have_posts() ) { $the_query->the_post(); ?>
+                                    <li>
+                                        <?php echo getImageOneByPostId(get_the_ID(),'diapo', get_the_title()); ?>
+                                    </li>
+                                <?php }
+                            } wp_reset_postdata(); ?>
                         </ul>
                     </div>
                 </div>
