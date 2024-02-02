@@ -503,5 +503,25 @@ img {
       margin: 0 auto;
     }
   }
+}
+#mobile{
+  padding: 10rem 0;
+  .wrap{
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
 
+    .content{
+      width: 50%;
+
+      .texte{
+        h1{
+          font-size: 51px;
+          color: v.$blanc;
+          text-shadow: 3px 2px 0 v.$noir;
+        }
+      }
+
+    }
+  }
 }

@@ -154,8 +154,24 @@ get_header();
                 <iframe width="1024" height="554" src="<?php echo web_r($metaHome, 'video') ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
         </div>
-
         <div class="separator"></div>
+    </div>
+</section>
+<section id="mobile">
+    <div class="wrap">
+        <div class="content">
+            <div class="logo">
+                <img src="<?php echo asset('img/logo.png') ?>" alt="logo canview">
+            </div>
+            <div class="texte">
+                <h1>Bientôt...</h1>
+                <p>Retrouver Can View sur toutes vos plateformes bientôt</p>
+            </div>
+            <div class="download">
+                <a class="apple" href="https://www.apple.com/fr/app-store/"><img src="<?php echo asset('img/app-store-badge.svg') ?>" alt="logo apple"></a>
+                <a class="google" href="https://play.google.com/store/"><img src="<?php echo asset('img/google-play-badge.png') ?>" alt="logo google"></a>
+            </div>
+        </div>
     </div>
 
 </section>
