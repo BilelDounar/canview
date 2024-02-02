@@ -505,23 +505,61 @@ img {
   }
 }
 #mobile{
-  padding: 10rem 0;
+  padding: 15rem 0;
   .wrap{
     display: flex;
     justify-content: flex-end;
     flex-direction: row;
 
     .content{
+      display: flex;
+      flex-direction: column;
       width: 50%;
 
+      .logo{
+        padding-bottom: 5rem;
+        img{
+          filter: drop-shadow(0px 3px 4px v.$noir);
+          width: 75%;
+
+        }
+      }
+
       .texte{
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        padding-bottom: 2rem;
+        gap: 1rem;
         h1{
           font-size: 51px;
           color: v.$blanc;
           text-shadow: 3px 2px 0 v.$noir;
         }
+        p{
+          font-size: 21px;
+          color: v.$noir;
+        }
+      }
+      .download{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        .apple{
+          width: 166px;
+        }
+
+        .google{
+          width: 166px;
+        }
+
       }
 
     }
   }
+}
+#cv{
+  padding: 10rem;
+  background-color: v.$noir;
 }
