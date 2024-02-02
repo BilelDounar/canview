@@ -10,6 +10,8 @@
  */
 ?>
 
+<a href="#" id="back-to-top">Retour en haut</a>
+
 <footer id="colophon">
     <div class="logo">
         <img src="<?= path() ?>/app/themes/can_view/asset/img/logo.png" alt="">
