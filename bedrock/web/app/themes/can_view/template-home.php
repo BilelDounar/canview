@@ -105,7 +105,7 @@ get_header();
             <div class="content">
                 <div class="titles">
                     <h1>Configurez votre compte</h1>
-                    <p>Lorem ipsum dolor sit amet</p>
+                    <p>Profitez pleinement de CanView</p>
                 </div>
                 <div class="onglets">
                     <div class="onglet_1">
