@@ -149,6 +149,22 @@ function validEmail($err, $value, $keyErr)
     return $err;
 }
 
+function validPhoneNumber($err, $value, $keyErr)
+{
+    if (!empty($value)) {
+        $sanitizedPhoneNumber = filter_var($value, FILTER_SANITIZE_NUMBER_INT);
+        // Vérifier si le numéro de téléphone contient au moins 8 chiffres
+        if (!ctype_digit($sanitizedPhoneNumber) || strlen($sanitizedPhoneNumber) < 8) {
+            $err[$keyErr] = 'Veuillez renseigner un numéro de téléphone valide avec au moins 8 chiffres';
+        }
+    } else {
+        $err[$keyErr] = 'Veuillez renseigner un numéro de téléphone';
+    }
+    return $err;
+}
+
+
+
 
 function verifChamp($id, $champ, $num_array)
 {

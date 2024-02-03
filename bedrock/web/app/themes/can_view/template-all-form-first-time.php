@@ -2,7 +2,9 @@
 //
 // Template Name: All-Form-Fisrt-Time 
 //  
-include('header.php');
+get_header();
+
+
 
 ?>
 
@@ -40,9 +42,9 @@ include('header.php');
             </div>
             <div class="all_form_right">
 
-                <div class="premiere_etape">
+                <!-- <div class="premiere_etape">
                     <?php include('asset/view/form/signin.php') ?>
-                </div>
+                </div> -->
                 <div class="deuxieme_etape">
                     <?php include('asset/view/form/cv.php') ?>
                 </div>
@@ -55,10 +57,6 @@ include('header.php');
                     <l-dot-pulse size="85" stroke="3.5" speed="1" color="#87AACA"></l-dot-pulse>
 
                 </div>
-
-
-
-
             </div>
         </div>
     </div>
@@ -67,30 +65,10 @@ include('header.php');
 
 
 <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/dotPulse.js"></script>
-<script>
-    var signin = document.querySelector('#signin_button');
-    var premiere_etape = document.querySelector('.premiere_etape');
-    var deuxieme_etape = document.querySelector('.deuxieme_etape');
-    var loader_etape = document.querySelector('.loader_etape');
 
-    const errors = <?= json_encode($errors); ?>;
-    console.log(errors);
+<?php
 
-    signin.addEventListener('click', function(e) {
-        e.preventDefault();
 
-        if (errors.length <= 0) {
-            console.log(errors);
-            premiere_etape.style.display = "none";
 
-            setTimeout(() => {
-                loader_etape.style.display = "block";
 
-                setTimeout(() => {
-                    loader_etape.style.display = "none";
-                    deuxieme_etape.style.display = "block";
-                }, 1000);
-            }, 100);
-        }
-    });
-</script>
+get_footer();

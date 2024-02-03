@@ -1,31 +1,6 @@
-<?php 
+<?php
 
-$errors = '';
 
-if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['mail'])) {
-    // Assurez-vous que les valeurs ne sont pas vides
-    if (!empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['mail'])) {
-        // Assurez-vous que le nom d'utilisateur ne contient que des caractères alphanumériques
-        if (ctype_alnum($_POST['username'])) {
-            // Utilisez wp_create_user pour créer l'utilisateur
-            $user_id = wp_create_user($_POST['username'], $_POST['password'], $_POST['mail']);
-
-            if (!is_wp_error($user_id)) {
-                // L'utilisateur a été créé avec succès
-                $errors = '';
-            } else {
-                // Il y a eu une erreur lors de la création de l'utilisateur
-                $errors = 'Erreur lors de la création de l\'utilisateur : ' . $user_id->get_error_message();
-            }
-        } else {
-            // Le nom d'utilisateur n'est pas valide
-            $errors = 'Le nom d\'utilisateur doit contenir uniquement des caractères alphanumériques.';
-        }
-    } else {
-        // Les champs ne doivent pas être vides
-        $errors = 'Veuillez remplir tous les champs.';
-    }
-}
 
 ?>
 
@@ -36,17 +11,17 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['mail
     <div class="all_form_title">
         <h2>Inscription</h2>
     </div>
-    <form action="" method="post" id="inscritpion">
+    <form action="" method="post" id="inscription_form">
         <div class="inline_form ">
             <div class="coolinput ">
-                <label for="prenom" class="text">Prénom / Nom</label>
+                <label for="prenom" class="text">Prénom</label>
                 <input type="text" name="prenom" id="prenom" class="input">
                 <span id="error_prenom"></span>
             </div>
             <div class="coolinput ">
-                <label for="username" class="text">Username</label>
-                <input type="text" name="username" id="username" class="input">
-                <span id="error_username"></span>
+                <label for="nom" class="text">Nom</label>
+                <input type="text" name="nom" id="nom" class="input">
+                <span id="error_nom"></span>
             </div>
 
         </div>
@@ -64,14 +39,10 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['mail
         </div>
         <div class="inline_form ">
             <div class="coolinput ">
-                <label for="password2" class="text">Confirmer</label>
-                <input type="password" name="password2" id="password2" class="input">
-            </div>
-            <div class="coolinput ">
-                <button id="signin_button" class="input ">Envoyer</button>
+                <input type="submit" id="button_inscription" class="input " value="Envoyer">
             </div>
         </div>
-        <?= $errors ?>
+        <h4 id="error_global"></h4>
     </form>
     <div class="inline_form_text ">
         <div class="coolinput ">
@@ -82,5 +53,4 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['mail
         </div>
 
     </div>
-    <? debug($errors) ?>
 </section>

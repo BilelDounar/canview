@@ -60,6 +60,12 @@ add_action('widgets_init', 'can_view_widgets_init');
 function can_view_scripts()
 {
 
+    ///////////////////
+    // jQuery
+    wp_deregister_script('jquery');
+    wp_enqueue_script('jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js', array(), _S_VERSION, true);
+
+
     wp_add_inline_script('jquery', ' const MYSCRIPT = ' . json_encode(array(
         'ajaxUrl' => admin_url('admin-ajax.php'),
         'home'    =>  path('/'),
@@ -74,11 +80,9 @@ function can_view_scripts()
     //JS
     wp_enqueue_script('index-js', get_template_directory_uri() . '/asset/js/index.js', array(), _S_VERSION, false);
 
-
-
-    ///////////////////
-    // jQuery
-    wp_deregister_script('jquery');
-    wp_enqueue_script('jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js', array(), _S_VERSION, true);
+    if (is_page_template('template-all-form-first-time.php')) {
+        wp_enqueue_script('inscription-js', get_template_directory_uri() . '/asset/js/inscription.js', array(), _S_VERSION, false);
+        wp_enqueue_script('cv-js', get_template_directory_uri() . '/asset/js/cv.js', array(), _S_VERSION, false);
+    }
 }
 add_action('wp_enqueue_scripts', 'can_view_scripts');
