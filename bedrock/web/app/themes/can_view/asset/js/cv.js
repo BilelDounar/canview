@@ -320,6 +320,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const error_naiss = document.querySelector('#error_naiss');
     const error_adresse = document.querySelector('#error_adresse');
     const error_code = document.querySelector('#error_code');
+    const error_photo = document.querySelector('#error_photo');
     const error_ville = document.querySelector('#error_ville');
     const submitcv = formcv.querySelector('input[type=submit]');
     let params = new FormData();
@@ -345,9 +346,10 @@ document.addEventListener('DOMContentLoaded', function () {
         error_adresse.innerText = '';
         error_code.innerText = '';
         error_ville.innerText = '';
+        error_photo.innerText = '';
 
         if (data.success) {
-            formcv.remove();
+
         } else {
             if (data.errors.tel != null) {
                 error_tel.innerText = data.errors.tel;
@@ -363,6 +365,9 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             if (data.errors.ville != null) {
                 error_ville.innerText = data.errors.ville;
+            }
+            if (data.errors.photo != null) {
+                error_photo.innerText = data.errors.photo;
             }
         }
     }

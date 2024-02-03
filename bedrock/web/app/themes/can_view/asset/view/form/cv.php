@@ -1,5 +1,6 @@
 <?php
-debug($_POST);
+// debug($_POST);
+// debug(wp_upload_dir());
 
 global $wpdb;
 
@@ -24,7 +25,7 @@ $competencestech = $wpdb->get_results($query_hardskill, ARRAY_A);
     <div class="all_form_title">
         <h2>Créez votre CV</h2>
     </div>
-    <form action="" id="formcv" method="post">
+    <form action="" id="formcv" enctype="multipart/form-data" method="post">
         <div class="padd_cv">
             <div class="inline_form ">
                 <div class="coolinput ">
@@ -141,6 +142,7 @@ $competencestech = $wpdb->get_results($query_hardskill, ARRAY_A);
                     <label for="photo" class="text box_title">Votre Photo</label>
                     <div class="box_datalist">
                         <input type="file" class="input-file" name="photo" id="photo" accept="image/jpg, image/png, image/jpeg">
+                        <span id="error_photo"></span>
                         <p class="browse"><strong>Formats supportés :</strong> png, .jpg, .jpeg.</p>
 
                     </div>
