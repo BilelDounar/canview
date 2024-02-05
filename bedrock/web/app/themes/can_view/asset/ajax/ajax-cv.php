@@ -19,7 +19,7 @@ function getCVFormMaster()
     $photo = $_FILES['photo'];
     $langues = sanitize_text_field($_POST['langues']);
     $formation = sanitize_text_field($_POST['formation']);
-    $loisirs = sanitize_text_field($_POST['loisirs']);
+    // $loisirs = sanitize_text_field($_POST['loisirs']);
 
     // validation
     $errors = validPhoneNumber($errors, $tel, 'tel');
@@ -37,7 +37,6 @@ function getCVFormMaster()
         $prenom = $current_user->user_firstname;
         $email = $current_user->user_email;
 
-
         $currentYear = date('Y');
         $currentMonth = date('m');
 
@@ -53,9 +52,10 @@ function getCVFormMaster()
 
         if (move_uploaded_file($photo['tmp_name'], $target_file)) {
 
-            $cv = $wpdb->prefix . 'cv';
+            // Insérer les données dans la table principale (cv)
+            $cv_table = $wpdb->prefix . 'cv';
 
-            $data = array(
+            $cv_data = array(
                 'id_user' => get_current_user_id(),
                 'nom' => $nom,
                 'prenom' => $prenom,
@@ -74,10 +74,27 @@ function getCVFormMaster()
                 // 'loisirs' => $loisirs
             );
 
-            $wpdb->insert($cv, $data);
+            $wpdb->insert($cv_table, $cv_data);
+
+            $cv_id = $wpdb->insert_id;
+
+            $loisirs_table = $wpdb->prefix . 'loisir';
+
+            $loisirsData = json_decode(stripslashes($_POST['loisirs']), true);
+
+
+            $loisirs = is_array($loisirsData) ? $loisirsData : array();
+
+            foreach ($loisirs as $loisir) {
+                $loisirs_data = array(
+                    'id_cv' => $cv_id,
+                    'loisir' => $loisir,
+                );
+
+                $wpdb->insert($loisirs_table, $loisirs_data);
+            }
+
             $success = true;
-        } else {
-            $errors = 'Erreur lors du téléchargement de la photo.';
         }
     }
 
