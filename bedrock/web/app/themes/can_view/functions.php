@@ -7,6 +7,8 @@ require get_template_directory() . '/inc/image.php';
 
 require get_template_directory() . '/inc/custom/custom-diapo.php';
 
+//Ajax
+require get_template_directory() . '/ajax/ajax-connexion.php';
 
 //extra
 require get_template_directory() . '/inc/extra/template-tags.php';

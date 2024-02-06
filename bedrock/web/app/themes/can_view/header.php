@@ -46,8 +46,9 @@
                 <li><a href="">Déposer mon CV</a></li>
                 <li><a href="">Mes candidatures</a></li>
                 <li><a href="">Inscription</a></li>
-                <li><a href="">Connexion</a></li>
+                <li><a id="connexion" href="">Connexion</a></li>
                 <li><a href="">Mon compte</a></li>
             </ul>
         </nav>
     </header>
+<?php include ('view/modal-login.php')?>
