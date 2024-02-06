@@ -52,23 +52,28 @@ get_header();
                     <p>A la base j’étais juste un jedi tres sympa formé par Obi-wan Kenobi mais Palpatine est venu me faire la discute et en sah, le côté obscure... ça vaaaaaaaaaa, c’est pas si terrible.</p>
                     <table>
                         <tr>
-                            <td>Date de naissance : </td>
+                            <td class="titre">Date de naissance </td>
+                            <td>:</td>
                             <td>30/05/2004</td>
                         </tr>
                         <tr>
-                            <td>Téléphone : </td>
+                            <td class="titre">Téléphone </td>
+                            <td>:</td>
                             <td>0647314056</td>
                         </tr>
                         <tr>
-                            <td>Email : </td>
+                            <td class="titre">Email </td>
+                            <td>:</td>
                             <td>darkvador@gmail.com</td>
                         </tr>
                         <tr>
-                            <td>Adresse : </td>
+                            <td class="titre">Adresse : </td>
+                            <td>:</td>
                             <td>Etoile de la mort</td>
                         </tr>
                         <tr>
-                            <td>Permis : </td>
+                            <td class="titre">Permis </td>
+                            <td>:</td>
                             <td>Oui</td>
                         </tr>
                     </table>
