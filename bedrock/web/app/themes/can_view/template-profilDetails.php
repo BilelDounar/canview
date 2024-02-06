@@ -30,11 +30,11 @@ get_header();
                     <h3>Métier</h3>
                 </div>
                 <div class="liens">
-                    <img src="<?php echo asset('img/github-icon.svg')?>" alt="">
-                    <img src="<?php echo asset('img/stackoverflow-icon.svg')?>" alt="">
-                    <img src="<?php echo asset('img/linkedin-icon.svg')?>" alt="">
-                    <img src="<?php echo asset('img/twitter-icon.svg')?>" alt="">
-                    <img src="<?php echo asset('img/instagram-icon.svg')?>" alt="">
+                    <a href="https://github.com/"><img src="<?php echo asset('img/github-icon.svg')?>" alt=""></a>
+                    <a href="https://stackoverflow.com/"><img src="<?php echo asset('img/stackoverflow-icon.svg')?>" alt=""></a>
+                    <a href="https://fr.linkedin.com/"><img src="<?php echo asset('img/linkedin-icon.svg')?>" alt=""></a>
+                    <a href="https://twitter.com/"><img src="<?php echo asset('img/twitter-icon.svg')?>" alt=""></a>
+                    <a href="https://www.instagram.com/"><img src="<?php echo asset('img/instagram-icon.svg')?>" alt=""></a>
                 </div>
                 <div class="separator"></div>
                 <div class="lien_pdf">

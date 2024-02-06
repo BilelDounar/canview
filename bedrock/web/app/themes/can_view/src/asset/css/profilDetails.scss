@@ -39,9 +39,13 @@ img {
 }
 
 #profil_details{
+  padding: 3rem;
   .wrap{
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     .sidebar{
+      padding-right: 3rem;
       .elements{
         display: flex;
         justify-content: space-between;
@@ -60,6 +64,11 @@ img {
           color: v.$noir;
           gap: 1rem;
 
+          font-size: 17px;
+          font-weight: 500;
+          line-height: 27px;
+
+
           img{
             width: 25px;
           }
@@ -75,7 +84,107 @@ img {
     }
     .infos_principal{
       background-color: v.$blanc;
+      box-shadow: 5px 5px 5px #4c6066;
+      z-index: 99;
 
+
+      .photo{
+        width: 362px;
+      }
+      .text{
+        padding: 2rem 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .titres{
+          display: flex;
+          justify-content: space-between;
+          flex-direction: column;
+          gap: 1rem;
+
+          h2{
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 32px;
+            text-align: center;
+            color: v.$noir;
+          }
+
+          h3{
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 32px;
+            text-align: center;
+            color: v.$bleu-primary;
+
+          }
+        }
+        .liens {
+          display: flex;
+          justify-content: center;
+          gap: 1rem;
+          padding: 1rem 0 3rem 0;
+
+
+          a{
+            padding-bottom: 5px;
+            border-bottom: solid 2px v.$blanc;
+            img{
+              width: 15px;
+            }
+          }
+          a:hover{
+            border-bottom: solid 2px v.$noir;
+          }
+        }
+        .separator{
+          border: 1px solid v.$noir ;
+          width: 90%;
+
+        }
+        .lien_pdf{
+          padding: 1rem 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          a{
+            padding-bottom: 5px;
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 32px;
+            text-align: center;
+            color: v.$noir;
+            border-bottom: solid 2px v.$blanc;
+          }
+          a:hover{
+            border-bottom: solid 2px v.$noir;
+          }
+        }
+      }
+    }
+    .infos_modulable{
+      background-color: white;
+      border-radius: 0 15px 15px 0;
+      padding: 2rem;
+
+      .title{
+        h1{
+          font-size: 25px;
+          font-weight: 700;
+          line-height: 40px;
+          color: v.$noir;
+          padding:0 1rem 1rem 1rem;
+
+          span{
+            color: v.$bleu-primary;
+          }
+        }
+        .separator{
+          border: 1px solid v.$noir ;
+          width: 90%;
+        }
+      }
     }
   }
 }
