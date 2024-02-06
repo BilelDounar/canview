@@ -3,6 +3,13 @@
  * Template Name: EspaceCandidat
  */
 
+global $wpdb;
+$id=get_current_user_id();
+$cv = $wpdb->get_results(
+    "SELECT * FROM canview_cv WHERE id_user=$id;
+",
+);
+
 get_header();
 ?>
     <section id="espaceUser">
@@ -18,14 +25,14 @@ get_header();
                     </div>
                     <div class="content">
                         <div class="info">
-                            <p><span>Nom:</span> HANKS</p>
-                            <p><span>Prénom:</span> Tom</p>
-                            <p><span>Age:</span> 55ans</p>
+                            <p><span>Nom:</span> <?php echo $cv[0]->nom ?></p>
+                            <p><span>Prénom:</span> <?php echo $cv[0]->prenom ?></p>
+                            <p><span>Age:</span> <?php echo date('d/m/Y',strtotime($cv[0]->anniversaire)) ?></p>
                         </div>
                         <div class="action">
                             <ul>
                                 <li><a class="voir" href="">Voir le CV</a></li>
-                                <li><a class="telecharge" href="<?php echo path('app/themes/can_view/template-pdf.php') ?>">Télécharger le CV</a></li>
+                                <li><a class="telecharge" href="<?php echo path('CVPDF') ?><?php echo $id ?>">Télécharger le CV</a></li>
                                 <li><a class="modif" href="">Modifier le CV</a></li>
                                 <li><a class="supprime" href="">Supprimer le CV</a></li>
                             </ul>
