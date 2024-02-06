@@ -8,6 +8,7 @@ module.exports = {
         global: './src/index.js',
         utilisateur: './src/index.js',
         recruteur: './src/index.js',
+        profil : './src/index.js'
 
     },
     output: {
