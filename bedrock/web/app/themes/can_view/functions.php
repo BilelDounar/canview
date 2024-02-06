@@ -12,6 +12,7 @@ require get_template_directory() . '/inc/custom/custom-diapo.php';
 require get_template_directory() . '/inc/extra/template-tags.php';
 require get_template_directory() . '/inc/extra/template-functions.php';
 
+
 // request global
 global $metaHome;
 $metaHome = get_post_meta(6);
