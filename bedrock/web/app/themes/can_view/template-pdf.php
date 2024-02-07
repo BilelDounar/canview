@@ -6,29 +6,34 @@
 require('fpdf/fpdf.php');
 
 global $wpdb;
-$id=get_current_user_id();
+$id=$_GET['id'];
 $user="SELECT * 
        FROM canview_cv AS cv 
        LEFT JOIN canview_formation AS cf
-       ON cv.id_user=cf.id_cv
+       ON cv.id=cf.id_cv
        LEFT JOIN canview_experience AS ce
-       ON cv.id_user=ce.id_cv
+       ON cv.id=ce.id_cv
        LEFT JOIN canview_passerelle_hardskills AS ph
-       ON cv.id_user=ph.id_cv
+       ON cv.id=ph.id_cv
        LEFT JOIN canview_hardskills AS ch
        ON ph.id_hardskills=ch.id
        LEFT JOIN canview_softskills AS cs
-       ON cv.id_user=cs.id_cv
+       ON cv.id=cs.id_cv
        LEFT JOIN canview_passerelle_langue AS pl
-       ON cv.id_user=pl.id_cv
+       ON cv.id=pl.id_cv
        LEFT JOIN canview_langue AS cl
        ON pl.id_langue=cl.id
        LEFT JOIN canview_loisir AS clo
-       ON cv.id_user=clo.id_cv
+       ON cv.id=clo.id_cv
        WHERE cv.id_user=$id;";
 $infocv = $wpdb->get_results(
     $user
 );
+
+if(empty($infocv)){
+    //redirection a faire vers la création de cv
+    header('Location: '.path('403'));
+}
 
 //debug($infocv);
 

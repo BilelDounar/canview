@@ -32,7 +32,7 @@
         <nav class="top-nav wraphead">
 
             <div class="logo">
-                <a href="">
+                <a href="<?php echo path('/') ?>">
                     <img src="<?= path() ?>/app/themes/can_view/asset/img/logo.png" alt="">
                 </a>
             </div>
@@ -43,11 +43,21 @@
             </label>
 
             <ul class="menu">
-                <li><a href="">Déposer mon CV</a></li>
-                <li><a href="">Mes candidatures</a></li>
-                <li><a href="<?= path('all-form') ?>">Inscription</a></li>
-                <li><a href="">Connexion</a></li>
-                <li><a href="">Mon compte</a></li>
+                <?php
+                $user=wp_get_current_user();
+                if(!is_user_logged_in()){ ?>
+                    <li><a href="<?php echo path('all-form') ?>">Inscription</a></li>
+                    <li><a id="connexion" href="">Connexion</a></li>
+                <?php }else{
+                    if($user->roles[0]=='subscriber'){
+                    ?>
+                        <li><a href="<?php echo path('espace-candidat') ?>">Mon espace candidat</a></li>
+                        <li><a href="<?php echo path('CV') ?>">Mon curiculum vitae</a></li>
+                    <?php }else{ ?>
+                    <li><a href="<?php echo path('espace-recruteur') ?>">Mon espace recruteur</a></li>
+                <?php }
+                    } ?>
             </ul>
         </nav>
     </header>
+    <?php include('asset/view/modal-login.php') ?>

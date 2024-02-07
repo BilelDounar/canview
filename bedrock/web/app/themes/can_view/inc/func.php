@@ -174,3 +174,18 @@ function verifChamp($id, $champ, $num_array)
         return 'Aucune valeur';
     }
 }
+
+function securisationCandidat () {
+    $user=wp_get_current_user();
+    if(!is_user_logged_in()||$user->roles[0]!='subscriber') {
+        header('Location: '.path('403'));
+    }
+}
+
+function securisationRecruteur () {
+    $user=wp_get_current_user();
+    if(!is_user_logged_in()||$user->roles[0]!='recruteur') {
+        header('Location: '.path('403'));
+    }
+}
+

@@ -10,6 +10,7 @@ module.exports = {
         recruteur: './src/index.js',
         style: './src/index.js',
         allform: './src/index.js',
+        fpdf: './src/index.js',
     },
     output: {
         filename: 'js/[name].bundle.js',
