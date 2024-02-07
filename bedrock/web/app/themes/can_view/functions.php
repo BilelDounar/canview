@@ -8,10 +8,13 @@ require get_template_directory() . '/inc/image.php';
 require get_template_directory() . '/inc/custom/custom-diapo.php';
 require get_template_directory() . '/inc/custom/custom-cv.php';
 
+//Ajax
+require get_template_directory() . '/ajax/ajax-connexion.php';
 
 //extra
 require get_template_directory() . '/inc/extra/template-tags.php';
 require get_template_directory() . '/inc/extra/template-functions.php';
+
 
 // request global
 global $metaHome;

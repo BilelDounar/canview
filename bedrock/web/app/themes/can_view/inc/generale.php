@@ -65,6 +65,7 @@ function can_view_scripts()
     wp_enqueue_style('style_global', get_template_directory_uri() . '/public/asset/dist/css/global.bundle.css', array(), _S_VERSION);
     wp_enqueue_style('style_utilisateur', get_template_directory_uri() . '/public/asset/dist/css/utilisateur.bundle.css', array(), _S_VERSION);
     wp_enqueue_style('style_recruteur', get_template_directory_uri() . '/public/asset/dist/css/recruteur.bundle.css', array(), _S_VERSION);
+    wp_enqueue_style('style_fpdf', get_template_directory_uri() . '/public/asset/dist/css/fpdf.bundle.css', array(), _S_VERSION);
 
 
 
@@ -72,6 +73,13 @@ function can_view_scripts()
     // jQuery
     wp_deregister_script('jquery');
     wp_enqueue_script('jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js', array(), _S_VERSION, true);
+    wp_enqueue_script('micromodal-js', 'https://unpkg.com/micromodal/dist/micromodal.min.js', array(), _S_VERSION, true);
+
+    wp_add_inline_script('jquery','const MYSCRIPT = ' . json_encode(array(
+            'ajaxUrl' => admin_url('admin-ajax.php'),
+            'home'    => path('/'),
+            'theme'   => get_template_directory_uri()
+        )), 'before');
 
     ////////////////////////////
     /// flexslider
@@ -79,6 +87,7 @@ function can_view_scripts()
     if(is_page_template('template-home.php')) {
         wp_enqueue_script('flexslider-js', get_template_directory_uri() . '/asset/flexslider/jquery.flexslider-min.js', array(),_S_VERSION, true);
         wp_enqueue_script('home-js', get_template_directory_uri() . '/asset/js/home.js', array(),_S_VERSION, true);
+        wp_enqueue_script('modal-js', get_template_directory_uri() . '/asset/js/modal.js', array(),_S_VERSION, true);
     }
 }
 add_action('wp_enqueue_scripts', 'can_view_scripts');
