@@ -3,13 +3,11 @@
  * Template Name: EspaceRecruteur
  */
 
-$args = [
-    'post_type' => 'cv',
-    'posts_per_page' => -1
-];
-$the_query = new WP_Query($args);
-
-global $metaHome;
+global $wpdb;
+$cv = $wpdb->get_results(
+    "SELECT * FROM canview_cv;
+",
+);
 
 get_header();
 ?>
@@ -17,31 +15,24 @@ get_header();
     <div class="wrap">
         <h1><span>ESPACE</span> RECRUTEUR</h1>
         <div class="listing">
-            <?php if ( $the_query->have_posts() ) {
-                while ( $the_query->have_posts() ) {
-                $the_query->the_post();
-                $metaHome = get_the_ID();?>
-                    <div class="cv">
-                        <a href="">
-                            <div class="photo">
-                                <?= getImageOneByPostId(get_the_ID(),'img_cv', get_the_title()); ?>
+            <?php foreach($cv as $i){ ?>
+                <div class="cv">
+                    <a href="">
+                        <div class="photo">
+                            <img src="<?php echo asset('img/photo_profil.jpg') ?>" alt="">
+                        </div>
+                        <div class="content">
+                            <div class="info1">
+                                <p><?= $i->prenom ?> <?= $i->nom ?></p>
+                                <p><?= date('d/m/Y',strtotime($i->anniversaire)) ?></p>
                             </div>
-                            <div class="content">
-                                <div class="info1">
-                                    <p><?= esc_html( get_the_title() ); ?></p>
-                                    <p><?= nl2br(get_the_content()); ?></p>
-                                </div>
-                                <div class="metier">
-                                    <p><?= nl2br(get_the_excerpt()); ?></p>
-                                </div>
+                            <div class="metier">
+                                <p><?= $i->metier ?></p>
                             </div>
-                        </a>
-                    </div>
-                <?php } ?>
-            <?php } else {
-                esc_html_e( 'Sorry, no CVs matched your criteria.' );
-            }
-            wp_reset_postdata();?>
+                        </div>
+                    </a>
+                </div>
+            <?php } ?>
         </div>
     </div>
 </section>
