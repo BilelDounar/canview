@@ -80,9 +80,9 @@ get_header();
                         </table>
                     </div>
                 </div>
-                <div class="formation">
+                <div class="formation" style="">
                     <div class="title">
-                        <h1><span>Formation &</span>Expérience</h1>
+                        <h1><span>Formation & </span>Expérience</h1>
                         <div class="separator"></div>
                     </div>
                     <div class="texte">
@@ -95,6 +95,10 @@ get_header();
                                 <p>Obiwan Kenobi <br>(2008 - 2016)</p>
                                 <p>Obiwan Kenobi <br>(2008 - 2016)</p>
                                 <p>Obiwan Kenobi <br>(2008 - 2016)</p>
+                                <p>Obiwan Kenobi <br>(2008 - 2016)</p>
+                                <p>Obiwan Kenobi <br>(2008 - 2016)</p>
+                                <p>Obiwan Kenobi <br>(2008 - 2016)</p>
+                                <p>Obiwan Kenobi <br>(2008 - 2016)</p>
                             </div>
                         </div>
                         <div class="separator"></div>
@@ -104,6 +108,10 @@ get_header();
                                 <h2>Experirence</h2>
                             </div>
                             <div class="content">
+                                <p>Fight vs Comte Doku <br>(2015 - 2016)</p>
+                                <p>Fight vs Comte Doku <br>(2015 - 2016)</p>
+                                <p>Fight vs Comte Doku <br>(2015 - 2016)</p>
+                                <p>Fight vs Comte Doku <br>(2015 - 2016)</p>
                                 <p>Fight vs Comte Doku <br>(2015 - 2016)</p>
                                 <p>Fight vs Comte Doku <br>(2015 - 2016)</p>
                                 <p>Fight vs Comte Doku <br>(2015 - 2016)</p>
