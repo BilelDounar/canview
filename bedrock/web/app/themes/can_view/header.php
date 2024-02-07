@@ -32,7 +32,7 @@
         <nav class="top-nav wraphead">
 
             <div class="logo">
-                <a href="">
+                <a href="<?= path('/') ?>">
                     <img src="<?= path() ?>/app/themes/can_view/asset/img/logo.png" alt="">
                 </a>
             </div>
@@ -47,7 +47,8 @@
                 <li><a href="">Mes candidatures</a></li>
                 <li><a href="<?= path('all-form') ?>">Inscription</a></li>
                 <li><a href="">Connexion</a></li>
-                <li><a href="">Mon compte</a></li>
+                <li><a href="<?php wp_logout(); ?>">Mon compte</a></li>
             </ul>
         </nav>
     </header>
+

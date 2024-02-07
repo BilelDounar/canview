@@ -7,7 +7,7 @@
     <div class="all_form_title">
         <h2>Inscription</h2>
     </div>
-    <form action="" method="post" id="inscription_form">
+    <form action="" method="post" id="inscription_form" novalidate>
         <div class="inline_form ">
             <div class="coolinput ">
                 <label for="prenom" class="text">Prénom</label>
