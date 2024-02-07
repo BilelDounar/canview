@@ -9,6 +9,8 @@ require get_template_directory() . '/inc/custom/custom-diapo.php';
 
 //Ajax
 require get_template_directory() . '/ajax/ajax-connexion.php';
+require get_template_directory() . '/asset/ajax/ajax-inscription.php';
+require get_template_directory() . '/asset/ajax/ajax-cv.php';
 
 //extra
 require get_template_directory() . '/inc/extra/template-tags.php';
