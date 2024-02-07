@@ -6,6 +6,7 @@ require get_template_directory() . '/inc/image.php';
 
 
 require get_template_directory() . '/inc/custom/custom-diapo.php';
+require get_template_directory() . '/inc/custom/custom-cv.php';
 
 
 //extra
