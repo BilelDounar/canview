@@ -14,7 +14,7 @@ $cv = $wpdb->get_results(
 
 if(empty($cv)){
     //redirection a faire vers la création de cv
-    header('Location: '.path('403'));
+    header('Location: '.path('all-form').'?signon=on');
 }
 
 get_header();
