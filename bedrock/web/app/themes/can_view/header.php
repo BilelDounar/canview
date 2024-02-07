@@ -32,15 +32,22 @@
         <nav class="top-nav wraphead">
 
             <div class="logo">
-                <a href="<?= path('') ?>">
+                <a href="">
                     <img src="<?= path() ?>/app/themes/can_view/asset/img/logo.png" alt="">
                 </a>
             </div>
-            <ul class="right">
+
+            <input id="menu-toggle" type="checkbox" />
+            <label class='menu-button-container' for="menu-toggle">
+                <div class='menu-button'></div>
+            </label>
+
+            <ul class="menu">
+                <li><a href="">Déposer mon CV</a></li>
+                <li><a href="">Mes candidatures</a></li>
                 <li><a href="<?= path('all-form') ?>">Inscription</a></li>
                 <li><a href="">Connexion</a></li>
                 <li><a href="">Mon compte</a></li>
             </ul>
         </nav>
     </header>
-<?php include ('view/modal-login.php')?>

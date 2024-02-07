@@ -59,17 +59,12 @@ add_action('widgets_init', 'can_view_widgets_init');
  */
 function can_view_scripts()
 {
-
-    // wp_enqueue_style('can_view-style', get_stylesheet_uri(), array(), _S_VERSION);
-
+    // Styles
     wp_enqueue_style('style_global', get_template_directory_uri() . '/public/asset/dist/css/global.bundle.css', array(), _S_VERSION);
     wp_enqueue_style('style_utilisateur', get_template_directory_uri() . '/public/asset/dist/css/utilisateur.bundle.css', array(), _S_VERSION);
     wp_enqueue_style('style_recruteur', get_template_directory_uri() . '/public/asset/dist/css/recruteur.bundle.css', array(), _S_VERSION);
     wp_enqueue_style('style_fpdf', get_template_directory_uri() . '/public/asset/dist/css/fpdf.bundle.css', array(), _S_VERSION);
 
-
-
-    ///////////////////
     // jQuery
     wp_deregister_script('jquery');
     wp_enqueue_script('jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js', array(), _S_VERSION, true);
@@ -81,27 +76,17 @@ function can_view_scripts()
         'theme'   => get_template_directory_uri()
     )), 'before');
 
-    ////////////////////////////
-    /// flexslider
-
+    // flexslider
     if (is_page_template('template-home.php')) {
         wp_enqueue_script('flexslider-js', get_template_directory_uri() . '/asset/flexslider/jquery.flexslider-min.js', array(), _S_VERSION, true);
         wp_enqueue_script('home-js', get_template_directory_uri() . '/asset/js/home.js', array(), _S_VERSION, true);
         wp_enqueue_script('modal-js', get_template_directory_uri() . '/asset/js/modal.js', array(), _S_VERSION, true);
 
-
-        wp_add_inline_script('jquery', ' const MYSCRIPT = ' . json_encode(array(
-            'ajaxUrl' => admin_url('admin-ajax.php'),
-            'home'    =>  path('/'),
-            'theme'   => get_template_directory_uri()
-        )), 'before');
-
-        //Style
-        wp_enqueue_style('style_global', get_template_directory_uri() . '/public/asset/dist/css/global.bundle.css', array(), _S_VERSION);
+        // Styles
         wp_enqueue_style('style_all_form', get_template_directory_uri() . '/public/asset/dist/css/allform.bundle.css', array(), _S_VERSION);
         wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css', array(), _S_VERSION);
 
-        //JS
+        // JS
         wp_enqueue_script('index-js', get_template_directory_uri() . '/asset/js/index.js', array(), _S_VERSION, false);
 
         if (is_page_template('template-all-form-first-time.php')) {
@@ -109,5 +94,6 @@ function can_view_scripts()
             wp_enqueue_script('cv-js', get_template_directory_uri() . '/asset/js/cv.js', array(), _S_VERSION, false);
         }
     }
-    add_action('wp_enqueue_scripts', 'can_view_scripts');
 }
+
+add_action('wp_enqueue_scripts', 'can_view_scripts');
