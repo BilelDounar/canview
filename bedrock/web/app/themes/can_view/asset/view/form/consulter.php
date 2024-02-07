@@ -11,8 +11,8 @@
             Il est désormais consultable par les recruteurs de chez Can View ! De plus, il est toujours possible de le modifier depuis votre espace client.
         </p>
         <div class="inline_form ">
-            <a class=" button_final" href="">Espace Client </a>
-            <a class=" button_final" href="">Retour au menu</a>
+            <a class=" button_final" href="<?= path('espace-candidat') ?>">Espace Client </a>
+            <a class=" button_final" href="<?= path('/') ?>">Retour au menu</a>
         </div>
     </div>
 </section>

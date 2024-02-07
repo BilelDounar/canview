@@ -329,6 +329,18 @@ document.addEventListener('DOMContentLoaded', function () {
         evt.preventDefault();
         submitcv.disabled = true;
         params = new FormData(formcv);
+        const loisirsData = localStorage.getItem('loisirs');
+        params.append('loisirs', loisirsData);
+        const formationsData = localStorage.getItem('formations');
+        params.append('formations', formationsData);
+        const experiencesData = localStorage.getItem('experiences');
+        params.append('experiences', experiencesData);
+        const languesData = localStorage.getItem('langues');
+        params.append('langues', languesData);
+        const competencehardsData = localStorage.getItem('competencesHard');
+        params.append('competencehards', competencehardsData);
+        const competencesData = localStorage.getItem('competences');
+        params.append('competences', competencesData);
         params.append('action', 'get_CV_form');
         getFormCV();
     });
@@ -349,6 +361,25 @@ document.addEventListener('DOMContentLoaded', function () {
         error_photo.innerText = '';
 
         if (data.success) {
+
+
+            var deuxieme_etape = document.querySelector('.deuxieme_etape');
+            var troisieme_etape = document.querySelector('.troisieme_etape');
+
+            var loader_etape = document.querySelector('.loader_etape');
+
+            deuxieme_etape.style.display = "none";
+
+            setTimeout(() => {
+                loader_etape.style.display = "block";
+
+                setTimeout(() => {
+                    loader_etape.style.display = "none";
+                    troisieme_etape.style.display = "block";
+                }, 1000);
+            }, 100);
+
+
 
         } else {
             if (data.errors.tel != null) {
@@ -372,3 +403,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 });
+
+
+
+
+

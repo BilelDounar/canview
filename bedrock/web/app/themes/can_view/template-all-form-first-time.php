@@ -5,7 +5,6 @@
 get_header();
 
 
-
 ?>
 
 
@@ -26,14 +25,14 @@ get_header();
                             <img src="<?= path() ?>/app/themes/can_view/asset/img/dote.png" alt="">
                             <div class="">
                                 <h4>étape 2</h4>
-                                <p>Créez-vous un compte afin de consulter et modifier vos CV à votre guise.</p>
+                                <p>Créez-votre CV depuis notre formulaire dynamique afin de trouver votre poste idéal.</p>
                             </div>
                         </div>
                         <div class="all_form_text_box">
                             <img src="<?= path() ?>/app/themes/can_view/asset/img/dote.png" alt="">
                             <div class="">
                                 <h4>étape 3</h4>
-                                <p>Créez-vous un compte afin de consulter et modifier vos CV à votre guise.</p>
+                                <p>Consultez votre CV afin d'avoir une vision plus clair de celui-ci!</p>
                             </div>
                         </div>
 
@@ -42,9 +41,9 @@ get_header();
             </div>
             <div class="all_form_right">
 
-                <!-- <div class="premiere_etape">
+                <div class="premiere_etape">
                     <?php include('asset/view/form/signin.php') ?>
-                </div> -->
+                </div>
                 <div class="deuxieme_etape">
                     <?php include('asset/view/form/cv.php') ?>
                 </div>

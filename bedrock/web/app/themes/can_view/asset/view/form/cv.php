@@ -16,6 +16,7 @@ $langues = $wpdb->get_results($query_langues, ARRAY_A);
 $competences = $wpdb->get_results($query_skill, ARRAY_A);
 $competencestech = $wpdb->get_results($query_hardskill, ARRAY_A);
 
+
 ?>
 
 <div class="all_form_bar_horizontal">

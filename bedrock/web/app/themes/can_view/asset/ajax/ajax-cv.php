@@ -1,5 +1,4 @@
 <?php
-
 add_action('wp_ajax_get_CV_form', 'getCVFormMaster');
 add_action('wp_ajax_nopriv_get_CV_form', 'getCVFormMaster');
 
@@ -19,7 +18,6 @@ function getCVFormMaster()
     $photo = $_FILES['photo'];
     $langues = sanitize_text_field($_POST['langues']);
     $formation = sanitize_text_field($_POST['formation']);
-    // $loisirs = sanitize_text_field($_POST['loisirs']);
 
     // validation
     $errors = validPhoneNumber($errors, $tel, 'tel');
@@ -41,13 +39,12 @@ function getCVFormMaster()
         $currentMonth = date('m');
 
         $upload_dir = wp_upload_dir();
-        $target_dir = $upload_dir['basedir'] . '/' . $currentYear . '/' . $currentMonth . '/';
-
+        $target_dir = $upload_dir['basedir'] . '/user_profil';
         if (!file_exists($target_dir)) {
             wp_mkdir_p($target_dir);
         }
 
-        $file_name = $current_user->user_login . '_' . $nom . '_' . $prenom . '.' . pathinfo($photo['name'], PATHINFO_EXTENSION);
+        $file_name = $currentYear . '_' . $currentMonth . '_' . $nom . '_' . $prenom . '.' . pathinfo($photo['name'], PATHINFO_EXTENSION);
         $target_file = $target_dir . $file_name;
 
         if (move_uploaded_file($photo['tmp_name'], $target_file)) {
@@ -68,38 +65,158 @@ function getCVFormMaster()
                 'permis' => $permis,
                 'motivation' => $motivations,
                 'created_at' => current_time('mysql'),
-                // 'langues' => $langues,
                 'photo' => $file_name,
-                // 'formation' => $formation,
-                // 'loisirs' => $loisirs
             );
 
             $wpdb->insert($cv_table, $cv_data);
 
             $cv_id = $wpdb->insert_id;
 
+            // Loisirs
             $loisirs_table = $wpdb->prefix . 'loisir';
+            if (isset($_POST['loisirs'])) {
+                $loisirsData = isset($_POST['loisirs']) ? json_decode(stripslashes($_POST['loisirs']), true) : array();
+                $loisirs = is_array($loisirsData) ? $loisirsData : array();
 
-            $loisirsData = json_decode(stripslashes($_POST['loisirs']), true);
+                foreach ($loisirs as $loisir) {
+                    $loisir = sanitize_text_field($loisir);
 
+                    $loisirs_data = array(
+                        'id_cv' => $cv_id,
+                        'loisir' => $loisir,
+                    );
+                    $wpdb->insert($loisirs_table, $loisirs_data);
+                }
+            }
 
-            $loisirs = is_array($loisirsData) ? $loisirsData : array();
+            // Formations
+            $formations_table = $wpdb->prefix . 'formation';
 
-            foreach ($loisirs as $loisir) {
-                $loisirs_data = array(
-                    'id_cv' => $cv_id,
-                    'loisir' => $loisir,
-                );
+            if (isset($_POST['formations'])) {
+                $formationsData = isset($_POST['formations']) ? json_decode(stripslashes($_POST['formations']), true) : array();
+                $formations = is_array($formationsData) ? $formationsData : array();
 
-                $wpdb->insert($loisirs_table, $loisirs_data);
+                foreach ($formations as $formation) {
+                    $formation = sanitize_text_field($formation);
+
+                    $formations_data = array(
+                        'id_cv' => $cv_id,
+                        'formation' => $formation,
+                    );
+                    $wpdb->insert($formations_table, $formations_data);
+                }
+            }
+
+            // Expériences
+            $experiences_table = $wpdb->prefix . 'experience';
+
+            if (isset($_POST['experiences'])) {
+                $experiencesData = isset($_POST['experiences']) ? json_decode(stripslashes($_POST['experiences']), true) : array();
+                $experiences = is_array($experiencesData) ? $experiencesData : array();
+
+                foreach ($experiences as $experience) {
+                    $experience = sanitize_text_field($experience);
+
+                    $experiences_data = array(
+                        'id_cv' => $cv_id,
+                        'experience' => $experience,
+                    );
+                    $wpdb->insert($experiences_table, $experiences_data);
+                }
+            }
+
+            // Langues
+            $langues_table = $wpdb->prefix . 'passerelle_langue';
+
+            if (isset($_POST['langues'])) {
+                $languesData = isset($_POST['langues']) ? json_decode(stripslashes($_POST['langues']), true) : array();
+                $langues = is_array($languesData) ? $languesData : array();
+
+                foreach ($langues as $langue) {
+                    $langue = sanitize_text_field($langue);
+
+                    $langue_id = $wpdb->get_var(
+                        $wpdb->prepare(
+                            "SELECT id FROM {$wpdb->prefix}langue WHERE langue = %s",
+                            $langue
+                        )
+                    );
+
+                    if ($langue_id) {
+                        $langues_data = array(
+                            'id_cv' => $cv_id,
+                            'id_langue' => $langue_id,
+                        );
+                        $wpdb->insert($langues_table, $langues_data);
+                    }
+                }
+            }
+
+            // Compétences
+            $competences_table = $wpdb->prefix . 'passerelle_softskills';
+
+            if (isset($_POST['competences'])) {
+                $competencesData = isset($_POST['competences']) ? json_decode(stripslashes($_POST['competences']), true) : array();
+                $competences = is_array($competencesData) ? $competencesData : array();
+
+                foreach ($competences as $competence) {
+                    $competence = sanitize_text_field($competence);
+
+                    $competence_id = $wpdb->get_var(
+                        $wpdb->prepare(
+                            "SELECT id FROM {$wpdb->prefix}softskills WHERE softskills = %s",
+                            $competence
+                        )
+                    );
+
+                    if ($competence_id) {
+                        $competences_data = array(
+                            'id_cv' => $cv_id,
+                            'id_softskills' => $competence_id,
+                        );
+                        $wpdb->insert($competences_table, $competences_data);
+                    }
+                }
+            }
+
+            // Compétences Tech.
+            $competencehards_table = $wpdb->prefix . 'passerelle_hardskills';
+
+            if (isset($_POST['competencehards'])) {
+                $competencehardsData = isset($_POST['competencehards']) ? json_decode(stripslashes($_POST['competencehards']), true) : array();
+                $competencehards = is_array($competencehardsData) ? $competencehardsData : array();
+
+                foreach ($competencehards as $competencehard) {
+                    $competencehard = sanitize_text_field($competencehard);
+
+                    $hardskills_id = $wpdb->get_var(
+                        $wpdb->prepare(
+                            "SELECT id FROM {$wpdb->prefix}hardskills WHERE hardskills = %s",
+                            $competencehard
+                        )
+                    );
+
+                    if ($hardskills_id) {
+                        $competencehards_data = array(
+                            'id_cv' => $cv_id,
+                            'id_hardskills' => $hardskills_id,
+                        );
+                        $wpdb->insert($competencehards_table, $competencehards_data);
+                    }
+                }
             }
 
             $success = true;
+
+            showJson(array(
+                'errors' => $errors,
+                'success' => $success,
+            ));
         }
     }
 
     showJson(array(
         'errors' => $errors,
-        'success' => $success
+        'success' => $success,
     ));
 }

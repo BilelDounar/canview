@@ -1,8 +1,4 @@
-<?php
 
-
-
-?>
 
 <div class="all_form_bar_horizontal">
     <img src="<?= path() ?>/app/themes/can_view/asset/img/bar_horizontal1.png" alt="">
@@ -23,7 +19,6 @@
                 <input type="text" name="nom" id="nom" class="input">
                 <span id="error_nom"></span>
             </div>
-
         </div>
         <div class="inline_form ">
             <div class="coolinput ">
@@ -39,7 +34,7 @@
         </div>
         <div class="inline_form ">
             <div class="coolinput ">
-                <input type="submit" id="button_inscription" class="input " value="Envoyer">
+                <input type="submit" id="button_inscription" class="input" value="Envoyer">
             </div>
         </div>
         <h4 id="error_global"></h4>
@@ -49,8 +44,7 @@
             <a href="">Déjà un compte ?</a>
         </div>
         <div class="coolinput ">
-            <p>En soumettant ce formulaire vous concenter à l’utilisation de vos données </p>
+            <p>En soumettant ce formulaire vous consentez à l’utilisation de vos données </p>
         </div>
-
     </div>
 </section>

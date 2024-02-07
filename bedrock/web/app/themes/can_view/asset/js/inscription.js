@@ -38,9 +38,9 @@ document.addEventListener('DOMContentLoaded', function () {
             error_global.innerText = data.userCreationErrors;
 
             if (data.userCreationErrors == null) {
-                forminscription.remove();
+                
+                window.location.href = MYSCRIPT.home + 'all-form-fisrt-time?signon=on';
 
-                // var signin = document.querySelector('#button_inscription');
                 var premiere_etape = document.querySelector('.premiere_etape');
                 var deuxieme_etape = document.querySelector('.deuxieme_etape');
                 var loader_etape = document.querySelector('.loader_etape');
@@ -58,9 +58,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
             }
         } else {
-
-
-
             if (data.errors.prenom != null) {
                 error_prenom.innerText = data.errors.prenom;
             }
@@ -73,7 +70,31 @@ document.addEventListener('DOMContentLoaded', function () {
             if (data.errors.password != null) {
                 error_password.innerText = data.errors.password;
             }
-
         }
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Vérifier si le paramètre 'signon' est présent dans l'URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const signonParam = urlParams.get('signon');
+
+    if (signonParam === 'on') {
+
+        var premiere_etape = document.querySelector('.premiere_etape');
+        var deuxieme_etape = document.querySelector('.deuxieme_etape');
+        var loader_etape = document.querySelector('.loader_etape');
+
+        premiere_etape.style.display = "none";
+
+        setTimeout(() => {
+            loader_etape.style.display = "block";
+
+            setTimeout(() => {
+                loader_etape.style.display = "none";
+                deuxieme_etape.style.display = "block";
+            }, 1000);
+        }, 100);
+
     }
 });
