@@ -170,7 +170,8 @@ img {
         background-color: white;
         border-radius: 0 15px 15px 0;
         padding: 2rem;
-        height: 75%;
+        width: 660px;
+        height: 600px;
 
         .title{
           h1{
@@ -186,7 +187,7 @@ img {
           }
           .separator{
             border: 1px solid v.$noir ;
-            width: 90%;
+            width: 100%;
           }
         }
 
@@ -289,7 +290,55 @@ img {
             }
           }
         }
+        .loisirs{
+          .texte{
+            padding: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: space-around;
+            gap: 2rem;
+
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 32px;
+            text-align: center;
+          }
+
+        }
+        .hardskills{
+          .texte{
+            padding: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: space-around;
+            gap: 2rem;
+
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 32px;
+            text-align: center;
+          }
+
+        }
+        .softskills{
+          .texte{
+            padding: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: space-around;
+            gap: 2rem;
+
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 32px;
+            text-align: center;
+          }
+
+        }
       }
     }
   }
+}
+@media screen and (max-width: 720px){
+  
 }

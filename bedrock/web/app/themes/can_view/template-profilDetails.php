@@ -44,7 +44,7 @@ get_header();
                 </div>
             </div>
             <div class="infos_modulable">
-                <div class="profil" style="display: none">
+                <div class="profil" style="">
                     <div class="title">
                         <h1><span>A propos de </span>moi</h1>
                         <div class="separator"></div>
@@ -80,7 +80,7 @@ get_header();
                         </table>
                     </div>
                 </div>
-                <div class="formation" style="">
+                <div class="formation" style="display: none">
                     <div class="title">
                         <h1><span>Formation & </span>Expérience</h1>
                         <div class="separator"></div>
@@ -117,6 +117,42 @@ get_header();
                                 <p>Fight vs Comte Doku <br>(2015 - 2016)</p>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="loisirs" style="display: none">
+                    <div class="title">
+                        <h1><span>Mes </span>loisirs</h1>
+                        <div class="separator"></div>
+                    </div>
+                    <div class="texte">
+                        <li>piano</li>
+                        <li>paddle</li>
+                        <li>pétanque</li>
+
+                    </div>
+                </div>
+                <div class="hardskills" style="display: none">
+                    <div class="title">
+                        <h1><span>Compétences </span>techniques</h1>
+                        <div class="separator"></div>
+                    </div>
+                    <div class="texte">
+                        <li>je suis COMPETANT</li>
+                        <li>paddle</li>
+                        <li>pétanque</li>
+
+                    </div>
+                </div>
+                <div class="softskills" style="display: none">
+                    <div class="title">
+                        <h1><span>Compétences </span>générales</h1>
+                        <div class="separator"></div>
+                    </div>
+                    <div class="texte">
+                        <li>je suis COMPETANT</li>
+                        <li>paddle</li>
+                        <li>pétanque</li>
+
                     </div>
                 </div>
             </div>
