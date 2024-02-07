@@ -3,12 +3,20 @@
  * Template Name: EspaceCandidat
  */
 
+securisationCandidat();
+
 global $wpdb;
 $id=get_current_user_id();
 $cv = $wpdb->get_results(
     "SELECT * FROM canview_cv WHERE id_user=$id;
 ",
 );
+
+if(empty($cv)){
+    //redirection a faire vers la création de cv
+    die('ok');
+    header('Location: '.path('403'));
+}
 
 get_header();
 ?>
@@ -32,9 +40,8 @@ get_header();
                         <div class="action">
                             <ul>
                                 <li><a class="voir" href="">Voir le CV</a></li>
-                                <li><a class="telecharge" href="<?php echo path('CVPDF') ?><?php echo $id ?>">Télécharger le CV</a></li>
+                                <li><a class="telecharge" href="<?php echo path('cvpdf') ?>?id=<?php echo $id ?>">Télécharger le CV</a></li>
                                 <li><a class="modif" href="">Modifier le CV</a></li>
-                                <li><a class="supprime" href="">Supprimer le CV</a></li>
                             </ul>
                         </div>
                     </div>
