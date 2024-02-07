@@ -8,7 +8,6 @@ $cv = $wpdb->get_results(
     "SELECT * FROM canview_cv;
 ",
 );
-
 get_header();
 ?>
 <section id="espaceRecruteur">
@@ -17,7 +16,7 @@ get_header();
         <div class="listing">
             <?php foreach($cv as $i){ ?>
                 <div class="cv">
-                    <a href="">
+                    <a href="<?php echo path('cvpdf') ?>?id=<?php echo $i->id_user ?>">
                         <div class="photo">
                             <img src="<?php echo asset('img/photo_profil.jpg') ?>" alt="">
                         </div>
