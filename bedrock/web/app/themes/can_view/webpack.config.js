@@ -6,11 +6,6 @@ module.exports = {
     devtool: 'inline-source-map',
     entry: {
         global: './src/index.js',
-        // utilisateur: './src/index.js',
-        // recruteur: './src/index.js',
-        // style: './src/index.js',
-        // allform: './src/index.js',
-        // fpdf: './src/index.js',
     },
     output: {
         filename: 'js/[name].bundle.js',

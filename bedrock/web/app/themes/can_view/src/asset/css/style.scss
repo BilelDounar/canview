@@ -926,8 +926,33 @@ img {
   will-change: transform;
 }
 
+#error403{
+  text-align: center;
+  height:80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  h1{
+    font-size: 80px;
+  }
+  p{
+    margin: 1.5rem auto;
+    a{
+      font-size: 20px;
+      border-radius: 10px;
+      padding: 1rem;
+      color: white;
+      background-color: v.$bleu-form;
+      border: solid 2px v.$bleu-form;
+      transition: all 0.3s;
+    }
+    a:hover{
+      color: v.$bleu-form;
+      background-color: white;
+    }
+  }
 
-
+}
 
 
 
