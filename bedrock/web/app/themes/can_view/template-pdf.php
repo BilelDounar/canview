@@ -5,8 +5,6 @@
 
 require('fpdf/fpdf.php');
 
-securisationCandidat();
-
 global $wpdb;
 $id=$_GET['id'];
 $user="SELECT * 
