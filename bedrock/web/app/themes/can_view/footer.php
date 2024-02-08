@@ -19,17 +19,15 @@
     </div>
     <div class="fine-print">
         <ul>
-            <a href="<?= path() ?>">
-                <li>Main</li>
+            <a href="<?php echo path('all-form') ?>">
+                <li>Commencer</li>
             </a>
-            <a href="<?= path() ?>">
-                <li>Concept</li>
-            </a>
+            
             <a href="<?= path('/') ?>#statistics">
-                <li>Qui Sommes nous</li>
+                <li>Qui Sommes Nous</li>
             </a>
         </ul>
-        <p>All rights reserved 2024</p>
+        <p>Tous droits réservés 2024</p>
     </div>
     <div class="social">
         <img src="<?= path() ?>/app/themes/can_view/asset/img/twitter.svg" alt="">

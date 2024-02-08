@@ -1,5 +1,6 @@
 <?php
-$vendor_dir = rtrim(WP_CONTENT_DIR, '/') . '/vendor';
+
+// $vendor_dir = rtrim(WP_CONTENT_DIR, '/') . '/vendor';
 
 //require 'C:\xampp\htdocs\projet3\canview\bedrock\vendor/phpmailer/phpmailer/src/PHPMailer.php';
 //require 'C:\xampp\htdocs\projet3\canview\bedrock\vendor/phpmailer/phpmailer/src/SMTP.php';
@@ -230,40 +231,40 @@ function getCVFormMaster()
 
 
 
-            $sendmail = new PHPMailer(true);
-            try {
-                // Paramètres du serveur SMTP
-                $sendmail->CharSet = "UTF-8";
-                $sendmail->isSMTP();
-                $sendmail->Host = 'smtp.hostinger.com';
-                $sendmail->SMTPAuth = true;
-                $sendmail->Username = 'contact@portfoliobileldounar.online';
-                $sendmail->Password = '7gB#2D@9fZ!';
-                $sendmail->SMTPSecure = 'ssl';
-                $sendmail->Port = 465;
+            // $sendmail = new PHPMailer(true);
+            // try {
+            //     // Paramètres du serveur SMTP
+            //     $sendmail->CharSet = "UTF-8";
+            //     $sendmail->isSMTP();
+            //     $sendmail->Host = 'smtp.hostinger.com';
+            //     $sendmail->SMTPAuth = true;
+            //     $sendmail->Username = 'contact@portfoliobileldounar.online';
+            //     $sendmail->Password = '7gB#2D@9fZ!';
+            //     $sendmail->SMTPSecure = 'ssl';
+            //     $sendmail->Port = 465;
 
 
-                // Destinataire et contenu
-                $sendmail->setFrom('contact@portfoliobileldounar.online');
-                $sendmail->AddAddress($email);
-                $sendmail->isHTML(true);
-                $sendmail->Subject = 'Dépot de votre CV';
-                $sendmail->Body = "
-                    <div style='font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f4f4f4; color: #333;'>
-                    <h1><strong>Can View</strong></h1>
-                    <h2 style='color: #95d1d8;'>Bonjour $nom $prenom !</h2>
-                    <p>Votre CV a correctement été enregistré!<br><br>
-                    Vous pouvez à présent vous rendre dans votre <strong><a href='" . path('espace-candidat') . "' style='color: #95d1d8; text-decoration: none;'>Espace client</a></strong> afin de le consulter ou le modifier!<br><br>
-                    L'équipe <strong style='color: #95d1d8;'>Can View</strong> vous remercie pour votre confiance!
-                    </p>
-                    <p style='font-size: 14px; color: #888;'>Cordialement,<br>L'équipe Can View</p></div>";
+            //     // Destinataire et contenu
+            //     $sendmail->setFrom('contact@portfoliobileldounar.online');
+            //     $sendmail->AddAddress($email);
+            //     $sendmail->isHTML(true);
+            //     $sendmail->Subject = 'Dépot de votre CV';
+            //     $sendmail->Body = "
+            //         <div style='font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f4f4f4; color: #333;'>
+            //         <h1><strong>Can View</strong></h1>
+            //         <h2 style='color: #95d1d8;'>Bonjour $nom $prenom !</h2>
+            //         <p>Votre CV a correctement été enregistré!<br><br>
+            //         Vous pouvez à présent vous rendre dans votre <strong><a href='" . path('espace-candidat') . "' style='color: #95d1d8; text-decoration: none;'>Espace client</a></strong> afin de le consulter ou le modifier!<br><br>
+            //         L'équipe <strong style='color: #95d1d8;'>Can View</strong> vous remercie pour votre confiance!
+            //         </p>
+            //         <p style='font-size: 14px; color: #888;'>Cordialement,<br>L'équipe Can View</p></div>";
 
 
-                // Envoyer l'email
-                $sendmail->send();
-            } catch (Exception $e) {
-                echo "Erreur lors de l'envoi de l'email : {$sendmail->ErrorInfo}";
-            }
+            //     // Envoyer l'email
+            //     $sendmail->send();
+            // } catch (Exception $e) {
+            //     echo "Erreur lors de l'envoi de l'email : {$sendmail->ErrorInfo}";
+            // }
 
 
             showJson(array(
@@ -277,4 +278,7 @@ function getCVFormMaster()
         'errors' => $errors,
         'success' => $success,
     ));
+
 }
+
+
