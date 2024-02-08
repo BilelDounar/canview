@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (data.userCreationErrors == null) {
                 
-                window.location.href = MYSCRIPT.home + 'all-form-fisrt-time?signon=on';
+                window.location.href = MYSCRIPT.home + 'all-form?signon=on';
 
                 var premiere_etape = document.querySelector('.premiere_etape');
                 var deuxieme_etape = document.querySelector('.deuxieme_etape');

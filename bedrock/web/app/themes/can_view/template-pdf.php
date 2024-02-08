@@ -8,45 +8,92 @@ require('fpdf/fpdf.php');
 
 global $wpdb;
 $id = $_GET['id'];
-$user = "SELECT * 
-       FROM canview_cv AS cv 
-       LEFT JOIN canview_formation AS cf
-       ON cv.id=cf.id_cv
-       LEFT JOIN canview_experience AS ce
-       ON cv.id=ce.id_cv
-       LEFT JOIN canview_passerelle_hardskills AS ph
-       ON cv.id=ph.id_cv
-       LEFT JOIN canview_hardskills AS ch
-       ON ph.id_hardskills=ch.id
-       LEFT JOIN canview_passerelle_softskills AS ps
-       ON cv.id=ps.id_cv
-       LEFT JOIN canview_softskills AS cs
-       ON ps.id_softskills=cs.id
-       LEFT JOIN canview_passerelle_langue AS pl
-       ON cv.id=pl.id_cv
-       LEFT JOIN canview_langue AS cl
-       ON pl.id_langue=cl.id
-       LEFT JOIN canview_loisir AS clo
-       ON cv.id=clo.id_cv
-       WHERE cv.id_user=$id;";
+//$user = "SELECT *
+//       FROM canview_cv AS cv
+//       LEFT JOIN canview_formation AS cf
+//       ON cv.id=cf.id_cv
+//       LEFT JOIN canview_experience AS ce
+//       ON cv.id=ce.id_cv
+//       LEFT JOIN canview_passerelle_hardskills AS ph
+//       ON cv.id=ph.id_cv
+//       LEFT JOIN canview_hardskills AS ch
+//       ON ph.id_hardskills=ch.id
+//       LEFT JOIN canview_passerelle_softskills AS ps
+//       ON cv.id=ps.id_cv
+//       LEFT JOIN canview_softskills AS cs
+//       ON ps.id_softskills=cs.id
+//       LEFT JOIN canview_passerelle_langue AS pl
+//       ON cv.id=pl.id_cv
+//       LEFT JOIN canview_langue AS cl
+//       ON pl.id_langue=cl.id
+//       LEFT JOIN canview_loisir AS clo
+//       ON cv.id=clo.id_cv
+//       WHERE cv.id_user=$id
+//;";
+$user="SELECT * FROM canview_cv WHERE id_user=$id";
 $infocv = $wpdb->get_results(
     $user
 );
 
-if (empty($infocv)) {
-    //redirection a faire vers la création de cv
-    header('Location: '.path('all-form').'?signon=on');
-}
+$idcv= $infocv[0]->id;
+
+$hs="SELECT ch.hardskills FROM canview_passerelle_hardskills AS pas
+             LEFT JOIN canview_hardskills AS ch
+             ON pas.id_hardskills=ch.id
+             WHERE pas.id_cv = $idcv;
+             ";
+
+$hardskills = $wpdb->get_results(
+    $hs
+);
+
+$ss="SELECT cs.softskills FROM canview_passerelle_softskills AS pas
+             LEFT JOIN canview_softskills AS cs
+             ON pas.id_softskills=cs.id
+             WHERE pas.id_cv = $idcv;
+             ";
+
+$softskills = $wpdb->get_results(
+    $ss
+);
+
+$l="SELECT cl.langue FROM canview_passerelle_langue AS pas
+             LEFT JOIN canview_langue AS cl
+             ON pas.id_langue=cl.id
+             WHERE pas.id_cv = $idcv;
+             ";
+
+$langue = $wpdb->get_results(
+    $l
+);
+
+$for="SELECT formation FROM canview_formation WHERE id_cv=$idcv";
+$formation = $wpdb->get_results(
+    $for
+);
+
+$exp="SELECT experience FROM canview_experience WHERE id_cv=$idcv";
+$experience = $wpdb->get_results(
+    $exp
+);
+
+$loi="SELECT loisir FROM canview_loisir WHERE id_cv=$idcv";
+$loisir = $wpdb->get_results(
+    $loi
+);
+
 
 //debug($infocv);
+//debug(path('/'));
 
 class PDF extends FPDF
 {
     function BanderoleGauche()
     {
+        global $photo;
         $this->setFillColor(150, 210, 217);
         $this->rect(0, 0, 75, $this->h, 'F');
-        /*        $this->Image("<?php echo asset('img/photo_profil.jpg')?>",7.5,7.5,60,65,'JPG');*/
+        $this->Image(path('/')."/app/uploads/user_profil/$photo",7.5,7.5,60,65,'JPG');
     }
 
     function HeaderCV()
@@ -94,21 +141,21 @@ class PDF extends FPDF
         $this->SetFont('Arial', '', 12);
         $this->SetXY(15, 100);
         $this->Cell(0, 0, $anniversaire, 0, 1, 'L');
-        /*        $this->Image("<?php echo asset('imgCV/gateau_anniversaire.png')?>",7.5,97,5,5,'PNG');*/
+                $this->Image(path('/')."app/themes/can_view/asset/imgCV/gateau_anniversaire.png",7.5,97,5,5,'PNG');
 
         $this->SetXY(15, 110);
         $this->Cell(60, 0, $adresse, 0, 1, 'L');
         $this->SetXY(15, 118);
         $this->Cell(60, 0, $ville, 0, 1, 'L');
-        /*        $this->Image("<?php echo asset('imgCV/adresse.png')?>",7.5,106,5,7,'PNG');*/
+        $this->Image(path('/')."app/themes/can_view/asset/imgCV/adresse.png",7.5,106,5,7,'PNG');
 
         $this->SetXY(15, 128);
         $this->Cell(0, 0, $telephone, 0, 1, 'L');
-        /*        $this->Image("<?php echo asset('imgCV/telephone.png')?>",7.5,125,5,5,'PNG');*/
+        $this->Image(path('/')."app/themes/can_view/asset/imgCV/telephone.png",7.5,125,5,5,'PNG');
 
         $this->SetXY(15, 135);
         $this->MultiCell(60, 5, $mail, 0, 1, 'L');
-        /*        $this->Image("<?php echo asset('imgCV/mail.png')?>",7.5,135,5,5,'PNG');*/
+        $this->Image(path('/')."app/themes/can_view/asset/imgCV/mail.png",7.5,135,5,5,'PNG');
     }
 
     function Hardskills()
@@ -136,10 +183,10 @@ class PDF extends FPDF
 
     function Softskills()
     {
-        global $Softskills1;
-        global $Softskills2;
-        global $Softskills3;
-        global $Softskills4;
+        global $softskills1;
+        global $softskills2;
+        global $softskills3;
+        global $softskills4;
         $this->SetFont('Arial', 'B', 15);
         $this->SetXY(7.5, 195);
         $this->setFillColor(135, 170, 202);
@@ -148,13 +195,13 @@ class PDF extends FPDF
 
         $this->SetFont('Arial', '', 12);
         $this->SetXY(7.5, 210);
-        $this->Cell(60, 0, $Softskills1, 0, 1, 'C');
+        $this->Cell(60, 0, $softskills1, 0, 1, 'C');
         $this->SetXY(7.5, 217);
-        $this->Cell(60, 0, $Softskills2, 0, 1, 'C');
+        $this->Cell(60, 0, $softskills2, 0, 1, 'C');
         $this->SetXY(7.5, 224);
-        $this->Cell(60, 0, $Softskills3, 0, 1, 'C');
+        $this->Cell(60, 0, $softskills3, 0, 1, 'C');
         $this->SetXY(7.5, 231);
-        $this->Cell(60, 0, $Softskills4, 0, 1, 'C');
+        $this->Cell(60, 0, $softskills4, 0, 1, 'C');
     }
 
     function Langue()
@@ -218,26 +265,14 @@ class PDF extends FPDF
         $this->setFillColor(255,255,255);
         $this->SetTextColor(0,0,0);
         $this->MultiCell(60,5,$f_formation1.', ',0,1,'L');
-        $this->SetXY(80,193);
-        $this->Cell(60,0,$f_ecole1,0,1,'L');
-        $this->SetXY(80,199);
-        $this->Cell(60,0,$f_date1,0,1,'L');
 
         $this->SetXY(80,210);
         $this->MultiCell(60,5,$f_formation2.', ',0,1,'L');
-        $this->SetXY(80,223);
-        $this->Cell(60,0,$f_ecole2,0,1,'L');
-        $this->SetXY(80,229);
-        $this->Cell(60,0,$f_date2,0,1,'L');
 
         $this->SetXY(80,240);
         $this->MultiCell(60,5,$f_formation3.', ',0,1,'L');
-        $this->SetXY(80,253);
-        $this->Cell(60,0,$f_ecole3,0,1,'L');
-        $this->SetXY(80,259);
-        $this->Cell(60,0,$f_date3,0,1,'L');
     }
-
+//
     function experience()
     {
         global $e_experience1;
@@ -260,23 +295,15 @@ class PDF extends FPDF
         $this->setFillColor(255,255,255);
         $this->SetTextColor(0,0,0);
         $this->MultiCell(60,5,$e_experience1,0,1,'L');
-        $this->SetXY(150,193);
-        $this->Cell(60,0,$e_date1,0,1,'L');
 
         $this->SetXY(150,203);
         $this->MultiCell(60,5,$e_experience2,0,1,'L');
-        $this->SetXY(150,216);
-        $this->Cell(60,0,$e_date2,0,1,'L');
 
         $this->SetXY(150,226);
         $this->MultiCell(60,5,$e_experience3,0,1,'L');
-        $this->SetXY(150,239);
-        $this->Cell(60,0,$e_date3,0,1,'L');
 
         $this->SetXY(150,249);
         $this->MultiCell(60,5,$e_experience4,0,1,'L');
-        $this->SetXY(150,262);
-        $this->Cell(60,0,$e_date4,0,1,'L');
     }
     function separator()
     {
@@ -307,11 +334,12 @@ class PDF extends FPDF
         $this->Cell(0, 0, $loisir1 . $loisir2 . $loisir3, 0, 1, 'C');
     }
 }
-
+//
 //PROFIL
 $pdf = new PDF();
 $prenom = $infocv[0]->prenom;
 $nom = $infocv[0]->nom;
+$photo = $infocv[0]->photo;
 $metier = $infocv[0]->metier;
 
 //CONTACT
@@ -322,62 +350,62 @@ $telephone = $infocv[0]->telephone;
 $mail = $infocv[0]->mail;
 
 //HARDSKILLS
-if (!empty($infocv[0]->hardskills)) {
-    $hardskills1 = $infocv[0]->hardskills;
+if (!empty($hardskills[0]->hardskills)) {
+    $hardskills1 = $hardskills[0]->hardskills;
 } else {
     $hardskills1 = '';
 }
-if (!empty($infocv[1]->hardskills)) {
-    $hardskills2 = $infocv[1]->hardskills;
+if (!empty($hardskills[1]->hardskills)) {
+    $hardskills2 = $hardskills[1]->hardskills;
 } else {
     $hardskills2 = '';
 }
-if (!empty($infocv[2]->hardskills)) {
-    $hardskill3 = $infocv[2]->hardskills;
+if (!empty($hardskills[2]->hardskills)) {
+    $hardskills3 = $hardskills[2]->hardskills;
 } else {
     $hardskills3 = '';
 }
-if (!empty($infocv[3]->hardskills)) {
-    $hardskills4 = $infocv[3]->hardskills;
+if (!empty($hardskills[3]->hardskills)) {
+    $hardskills4 = $hardskills[3]->hardskills;
 } else {
     $hardskills4 = '';
 }
 
 //SOFTSKILLS
-if (!empty($infocv[0]->softskills)) {
-    $softskills1 = $infocv[0]->softskills;
+if (!empty($softskills[0]->softskills)) {
+    $softskills1 = $softskills[0]->softskills;
 } else {
     $softskills1 = '';
 }
-if (!empty($infocv[1]->softskills)) {
-    $softskills2 = $infocv[1]->softskills;
+if (!empty($softskills[1]->softskills)) {
+    $softskills2 = $softskills[1]->softskills;
 } else {
     $softskills2 = '';
 }
-if (!empty($infocv[2]->softskills)) {
-    $softskill3 = $infocv[2]->softskills;
+if (!empty($softskills[2]->softskills)) {
+    $softskills3 = $softskills[2]->softskills;
 } else {
     $softskills3 = '';
 }
-if (!empty($infocv[3]->softskills)) {
-    $softskills4 = $infocv[3]->softskills;
+if (!empty($softskills[3]->softskills)) {
+    $softskills4 = $softskills[3]->softskills;
 } else {
     $softskills4 = '';
 }
 
 //LANGUE
-if (!empty($infocv[0]->langue)) {
-    $langue1 = $infocv[0]->langue;
+if (!empty($langue[0]->langue)) {
+    $langue1 = $langue[0]->langue;
 } else {
     $langue1 = '';
 }
-if (!empty($infocv[1]->langue)) {
-    $langue2 = $infocv[1]->langue;
+if (!empty($langue[1]->langue)) {
+    $langue2 = $langue[1]->langue;
 } else {
     $langue2 = '';
 }
-if (!empty($infocv[2]->langue)) {
-    $langue3 = $infocv[2]->langue;
+if (!empty($langue[2]->langue)) {
+    $langue3 = $langue[2]->langue;
 } else {
     $langue3 = '';
 }
@@ -390,77 +418,57 @@ if (!empty($infocv[0]->motivation)) {
 }
 
 //FORMATION
-if(!empty($infocv[0]->formation)){
-    $f_formation1=$infocv[0]->formation;
-    $f_ecole1=$infocv[0]->ecole;
-    $f_date1='(' . date('Y',strtotime($infocv[0]->date_start_f)) .'-'. date('Y',strtotime($infocv[0]->date_end_f)) .')';
+if(!empty($formation[0]->formation)){
+    $f_formation1=$formation[0]->formation;
 }else{
     $f_formation1=' ';
-    $f_ecole1=' ';
-    $f_date1=' ';
 }
-if(!empty($infocv[1]->formation)){
-    $f_formation2=$infocv[1]->formation;
-    $f_ecole2=$infocv[1]->ecole;
-    $f_date2='(' . date('Y',strtotime($infocv[1]->date_start_f)) .'-'. date('Y',strtotime($infocv[1]->date_end_f)) .')';
+if(!empty($formation[1]->formation)){
+    $f_formation2=$formation[1]->formation;
 }else{
     $f_formation2=' ';
-    $f_ecole2=' ';
-    $f_date2=' ';
 }
-if(!empty($infocv[2]->formation)){
-    $f_formation3=$infocv[2]->formation;
-    $f_ecole3=$infocv[2]->ecole;
-    $f_date3='(' . date('Y',strtotime($infocv[2]->date_start_f)) .'-'. date('Y',strtotime($infocv[2]->date_end_f)) .')';
+if(!empty($formation[2]->formation)){
+    $f_formation3=$formation[2]->formation;
 }else{
-    $f_formation3=' ';
-    $f_ecole3=' ';
-    $f_date3=' ';
+    $f_formation3='';
 }
 
 //EXPERIENCE
-if(!empty($infocv[0]->experience)){
-    $e_experience1=$infocv[0]->experience;
-    $e_date1='(' . date('Y',strtotime($infocv[0]->date_start_e)).'-'. date('Y',strtotime($infocv[0]->date_end_e)) .')';
+if(!empty($experience[0]->experience)){
+    $e_experience1=$experience[0]->experience;
 }else{
     $e_experience1='';
-    $e_date1='';
 }
-if(!empty($infocv[1]->experience)){
-    $e_experience2=$infocv[1]->experience;
-    $e_date2='(' . date('Y',strtotime($infocv[1]->date_start_e)).'-'. date('Y',strtotime($infocv[1]->date_end_e)) ;
+if(!empty($experience[1]->experience)){
+    $e_experience2=$experience[1]->experience;
 }else{
     $e_experience2='';
-    $e_date2='';
 }
-if(!empty($infocv[2]->experience)){
-    $e_experience3=$infocv[2]->experience;
-    $e_date3='(' . date('Y',strtotime($infocv[2]->date_start_e)).'-'. date('Y',strtotime($infocv[2]->date_end_e)) ;
+if(!empty($experience[2]->experience)){
+    $e_experience3=$experience[2]->experience;
 }else{
     $e_experience3='';
-    $e_date3='';
 }
-if(!empty($infocv[3]->experience)){
-    $e_experience4=$infocv[3]->experience;
-    $e_date4='(' . date('Y',strtotime($infocv[3]->date_start_e)).'-'. date('Y',strtotime($infocv[3]->date_end_e)) ;
+if(!empty($experience[3]->experience)){
+    $e_experience4=$experience[3]->experience;
 }else{
     $e_experience4='';
-    $e_date4='';
 }
 
 //LOISIR
-if (!empty($infocv[0]->loisir)) {
-    $loisir1 = $infocv[0]->loisir;
+if (!empty($loisir[0]->loisir)) {
+    $loisir1 = $loisir[0]->loisir.' / ';
 } else {
     $loisir1 = '';
 }
-if (!empty($infocv[0]->loisir)) {
-    $loisir2 = $infocv[0]->loisir;
+if (!empty($loisir[1]->loisir)) {
+    $loisir2 = $loisir[1]->loisir.' / ';
 } else {
     $loisir2 = '';
 }
-if (!empty($infocv[0]->loisir)) {
-    $loisir3 = $infocv[0]->loisir;
+if (!empty($loisir[2]->loisir)) {
+    $loisir3 = $loisir[2]->loisir;
 } else {
     $loisir3 = '';
 }
