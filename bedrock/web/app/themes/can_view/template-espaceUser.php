@@ -16,6 +16,9 @@ if(empty($cv)){
     //redirection a faire vers la création de cv
     header('Location: '.path('403'));
 }
+$anniversaire = new DateTime($cv[0]->anniversaire);
+$aujourdHui = new DateTime();
+$age = $aujourdHui->diff($anniversaire)->y;
 
 get_header();
 ?>
@@ -27,14 +30,14 @@ get_header();
                 <div class="profil">
                     <div class="photoProfil">
                         <div class="photo">
-                            <img src="<?php echo asset('img/photo_profil.jpg') ?>" alt="">
+                            <img src="<?= path('/') .'app/uploads/user_profil/' . $cv[0]->photo ?>" alt="">
                         </div>
                     </div>
                     <div class="content">
                         <div class="info">
                             <p><span>Nom:</span> <?php echo $cv[0]->nom ?></p>
                             <p><span>Prénom:</span> <?php echo $cv[0]->prenom ?></p>
-                            <p><span>Age:</span> <?php echo date('d/m/Y',strtotime($cv[0]->anniversaire)) ?></p>
+                            <p><span>Age:</span> <?php echo $age ?> ans</p>
                         </div>
                         <div class="action">
                             <ul>

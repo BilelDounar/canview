@@ -44,20 +44,25 @@
 
             <ul class="menu">
                 <?php
-                $user=wp_get_current_user();
-                if(!is_user_logged_in()){ ?>
+                $user = wp_get_current_user();
+                if (!is_user_logged_in()) { ?>
                     <li><a href="<?php echo path('all-form') ?>">Inscription</a></li>
                     <li><a id="connexion" href="">Connexion</a></li>
-                <?php }else{
-                    if($user->roles[0]=='subscriber'){
+                    <?php } else {
+                    if ($user->roles[0] == 'subscriber') {
                     ?>
                         <li><a href="<?php echo path('espace-candidat') ?>">Mon espace candidat</a></li>
                         <li><a href="<?php echo path('CV') ?>">Mon curiculum vitae</a></li>
-                    <?php }else{ ?>
-                    <li><a href="<?php echo path('espace-recruteur') ?>">Mon espace recruteur</a></li>
-                <?php }
-                    } ?>
+                    <?php } else { ?>
+                        <li><a href="<?php echo path('espace-recruteur') ?>">Mon espace recruteur</a></li>
+                    <?php } ?>
+
+                    <li><a href="<?php echo wp_logout_url(path('/')); ?>">Déconnexion</a></li>
+
+                <?php  } ?>
+
+
             </ul>
         </nav>
     </header>
-    <?php include('asset/view/modal-login.php') ?>
+    <?php include('asset/view/modal-login.php');

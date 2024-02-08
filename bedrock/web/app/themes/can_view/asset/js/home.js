@@ -3,5 +3,6 @@ $(window).on('load',function() {
     $('.flexslider').flexslider({
         controlNav: false,
         directionNav: false,
+        slideshowSpeed: 1500,
     });
 });
