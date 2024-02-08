@@ -1,9 +1,9 @@
 <?php
 $vendor_dir = rtrim(WP_CONTENT_DIR, '/') . '/vendor';
 
-require 'C:\xampp\htdocs\bachelor-info-1\web\git\canview\canview\bedrock/vendor/phpmailer/phpmailer/src/PHPMailer.php';
-require 'C:\xampp\htdocs\bachelor-info-1\web\git\canview\canview\bedrock/vendor/phpmailer/phpmailer/src/SMTP.php';
-require 'C:\xampp\htdocs\bachelor-info-1\web\git\canview\canview\bedrock/vendor/phpmailer/phpmailer/src/Exception.php';
+require 'C:\xampp2\htdocs\projet_canview\projet-cvtheques\bedrock/vendor/phpmailer/phpmailer/src/PHPMailer.php';
+require 'C:\xampp2\htdocs\projet_canview\projet-cvtheques\bedrock/vendor/phpmailer/phpmailer/src/SMTP.php';
+require 'C:\xampp2\htdocs\projet_canview\projet-cvtheques\bedrock/vendor/phpmailer/phpmailer/src/Exception.php';
 
 
 use PHPMailer\PHPMailer\PHPMailer;

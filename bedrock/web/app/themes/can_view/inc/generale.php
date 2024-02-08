@@ -96,11 +96,11 @@ function can_view_scripts()
 
     }
 
-    if(is_page_template('template-profilDetails.php')) {
-        wp_enqueue_script('profil-js', get_template_directory_uri() . '/asset/js/profil.js', array(),_S_VERSION, true);
-
+    if (is_page_template('template-profilDetails.php')) {
+        wp_enqueue_script('profil-js', get_template_directory_uri() . '/asset/js/profil.js', array(), _S_VERSION, true);
     }
-
 }
 
 add_action('wp_enqueue_scripts', 'can_view_scripts');
+
+add_role('Recruteur', 'Recruteur', get_role('administrator')->capabilities);
