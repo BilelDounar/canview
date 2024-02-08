@@ -8,29 +8,80 @@ require('fpdf/fpdf.php');
 
 global $wpdb;
 $id = $_GET['id'];
-$user = "SELECT * 
-       FROM canview_cv AS cv 
-       LEFT JOIN canview_formation AS cf
-       ON cv.id=cf.id_cv
-       LEFT JOIN canview_experience AS ce
-       ON cv.id=ce.id_cv
-       LEFT JOIN canview_passerelle_hardskills AS ph
-       ON cv.id=ph.id_cv
-       LEFT JOIN canview_hardskills AS ch
-       ON ph.id_hardskills=ch.id
-       LEFT JOIN canview_passerelle_softskills AS ps
-       ON cv.id=ps.id_cv
-       LEFT JOIN canview_softskills AS cs
-       ON ps.id_softskills=cs.id
-       LEFT JOIN canview_passerelle_langue AS pl
-       ON cv.id=pl.id_cv
-       LEFT JOIN canview_langue AS cl
-       ON pl.id_langue=cl.id
-       LEFT JOIN canview_loisir AS clo
-       ON cv.id=clo.id_cv
-       WHERE cv.id_user=$id;";
+//$user = "SELECT *
+//       FROM canview_cv AS cv
+//       LEFT JOIN canview_formation AS cf
+//       ON cv.id=cf.id_cv
+//       LEFT JOIN canview_experience AS ce
+//       ON cv.id=ce.id_cv
+//       LEFT JOIN canview_passerelle_hardskills AS ph
+//       ON cv.id=ph.id_cv
+//       LEFT JOIN canview_hardskills AS ch
+//       ON ph.id_hardskills=ch.id
+//       LEFT JOIN canview_passerelle_softskills AS ps
+//       ON cv.id=ps.id_cv
+//       LEFT JOIN canview_softskills AS cs
+//       ON ps.id_softskills=cs.id
+//       LEFT JOIN canview_passerelle_langue AS pl
+//       ON cv.id=pl.id_cv
+//       LEFT JOIN canview_langue AS cl
+//       ON pl.id_langue=cl.id
+//       LEFT JOIN canview_loisir AS clo
+//       ON cv.id=clo.id_cv
+//       WHERE cv.id_user=$id;";
+
+$user = "SELECT *
+       FROM canview_cv
+       WHERE id_user=$id;";
 $infocv = $wpdb->get_results(
     $user
+);
+
+$idcv= $infocv[0]->id;
+
+$hs="SELECT ch.hardskills FROM canview_passerelle_hardskills AS pas
+             LEFT JOIN canview_hardskills AS ch
+             ON pas.id_hardskills=ch.id
+             WHERE pas.id_cv = $idcv;
+             ";
+
+$hardskills = $wpdb->get_results(
+    $hs
+);
+
+$ss="SELECT cs.softskills FROM canview_passerelle_softskills AS pas
+             LEFT JOIN canview_softskills AS cs
+             ON pas.id_softskills=cs.id
+             WHERE pas.id_cv = $idcv;
+             ";
+
+$softskills = $wpdb->get_results(
+    $ss
+);
+
+$l="SELECT cl.langue FROM canview_passerelle_langue AS pas
+             LEFT JOIN canview_langue AS cl
+             ON pas.id_langue=cl.id
+             WHERE pas.id_cv = $idcv;
+             ";
+
+$langue = $wpdb->get_results(
+    $l
+);
+
+$for="SELECT formation FROM canview_formation WHERE id_cv=$idcv";
+$formation = $wpdb->get_results(
+    $for
+);
+
+$exp="SELECT experience FROM canview_experience WHERE id_cv=$idcv";
+$experience = $wpdb->get_results(
+    $exp
+);
+
+$loi="SELECT loisir FROM canview_loisir WHERE id_cv=$idcv";
+$loisir = $wpdb->get_results(
+    $loi
 );
 
 if (empty($infocv)) {

@@ -4,6 +4,8 @@
  */
 
 require_once 'functions.php';
+
+
 global $wpdb;
 $id = $_GET['id'];
 $user="SELECT * FROM canview_cv WHERE id_user=$id";
@@ -58,7 +60,7 @@ $loisir = $wpdb->get_results(
     $loi
 );
 
-debug($hardskills);
+debug($softskills);
 
 
 get_header();
