@@ -798,6 +798,7 @@ img {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 10px;
     }
 
     p {
@@ -943,12 +944,12 @@ img {
 #motivations,
 .searchInput,
 .box_form {
-    padding: 11px 10px;
-    font-size: 0.75rem;
-    border: 3px v.$bleu_form solid;
-    border-radius: 9px;
-    background: v.$blanc;
-    resize: none;
+  padding: 11px 10px;
+  font-size: 0.75rem;
+  border: 3px v.$bleu_form solid;
+  border-radius: 9px;
+  background: v.$blanc;
+  resize: none;
 
 }
 
@@ -960,7 +961,7 @@ img {
 #motivations:focus,
 .searchInput:focus,
 .box_form:focus {
-    outline: none;
+  outline: none;
 }
 
 
@@ -1077,6 +1078,15 @@ img {
   }
 
 }
+
+#tel_img {
+  width: 65%;
+}
+
+.fine-print {
+  text-align: center;
+}
+
 
 
 
@@ -1360,4 +1370,3 @@ img {
     }
   }
 }
-

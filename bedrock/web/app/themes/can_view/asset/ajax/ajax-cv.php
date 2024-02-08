@@ -1,9 +1,5 @@
 <?php
 
-// if ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) {
-//     wp_die( 'Accès non autorisé.' );
-// }
-
 // $vendor_dir = rtrim(WP_CONTENT_DIR, '/') . '/vendor';
 
 //require 'C:\xampp\htdocs\projet3\canview\bedrock\vendor/phpmailer/phpmailer/src/PHPMailer.php';
@@ -282,7 +278,7 @@ function getCVFormMaster()
         'errors' => $errors,
         'success' => $success,
     ));
+
 }
 
 
-// wp_die();

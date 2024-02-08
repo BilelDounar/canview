@@ -163,7 +163,7 @@ get_header();
     <div class="wrap">
         <div class="content">
             <div class="left_content">
-                <img src="<?php echo asset('img/telephone.png') ?>" alt="téléphone">
+                <img src="<?php echo asset('img/telephone.png') ?>" id="tel_img" alt="téléphone">
             </div>
             <div class="right_content">
                 <div class="logo">
