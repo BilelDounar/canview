@@ -16,7 +16,7 @@ boutonProfil.addEventListener('click', function (evt){
     infosLoisirs.style.display = 'none';
     infosHardskills.style.display = 'none';
     infosSoftskills.style.display = 'none';
-})
+});
 
 boutonFormation.addEventListener('click', function (evt){
     infosProfil.style.display = 'none';
@@ -24,7 +24,7 @@ boutonFormation.addEventListener('click', function (evt){
     infosLoisirs.style.display = 'none';
     infosHardskills.style.display = 'none';
     infosSoftskills.style.display = 'none';
-})
+});
 
 boutonLoisirs.addEventListener('click', function (evt){
     infosProfil.style.display = 'none';
@@ -32,7 +32,7 @@ boutonLoisirs.addEventListener('click', function (evt){
     infosLoisirs.style.display = 'block';
     infosHardskills.style.display = 'none';
     infosSoftskills.style.display = 'none';
-})
+});
 
 boutonHardskills.addEventListener('click', function (evt){
     infosProfil.style.display = 'none';
@@ -40,7 +40,7 @@ boutonHardskills.addEventListener('click', function (evt){
     infosLoisirs.style.display = 'none';
     infosHardskills.style.display = 'block';
     infosSoftskills.style.display = 'none';
-})
+});
 
 boutonSoftskills.addEventListener('click', function (evt){
     infosProfil.style.display = 'none';
