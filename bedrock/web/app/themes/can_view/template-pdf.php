@@ -6,6 +6,8 @@
 
 require('fpdf/fpdf.php');
 
+securisationcv();
+
 global $wpdb;
 $id = $_GET['id'];
 //$user = "SELECT *

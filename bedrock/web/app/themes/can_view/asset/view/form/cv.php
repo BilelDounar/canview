@@ -193,7 +193,7 @@ $competencestech = $wpdb->get_results($query_hardskill, ARRAY_A);
                     <div class="coolinput box_datalist">
                         <label for="searchInput" class="text">Expériences :</label>
                         <div class="box_datalist" id="boxDataExperiences">
-                            <input type="text" id="searchInputExperiences" name="formation" class="searchInput">
+                            <input type="text" id="searchInputExperiences" name="formation" class="searchInput" placeholder="Ex: Votre experience, (année de début-année de fin)">
                             <div class="container_button_cv">
                                 <a href="#" id="addExperiences" class="input button_add">Ajouter</a>
                             </div>
@@ -209,7 +209,7 @@ $competencestech = $wpdb->get_results($query_hardskill, ARRAY_A);
                     <div class="coolinput box_datalist">
                         <label for="searchInput" class="text">Formations :</label>
                         <div class="box_datalist" id="boxDataFormations">
-                            <input type="text" id="searchInputFormations" name="formation" class="searchInput">
+                            <input type="text" id="searchInputFormations" name="formation" class="searchInput" placeholder="Ex: Nom de la formation, nom de l'école, (année de début-année de fin)">
                             <div class="container_button_cv">
                                 <a href="#" id="addFormations" class="input button_add">Ajouter</a>
                             </div>

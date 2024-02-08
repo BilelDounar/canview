@@ -5,20 +5,15 @@
 
 require_once 'functions.php';
 
+securisationcv();
+
 global $wpdb;
-$id_user=wp_get_current_user();
-if($id_user->roles[0]!='subscriber'){
-    $id=get_current_user_id();
-}else{
-    $id = $_GET['id'];
-}
+$id = $_GET['id'];
 
 $user="SELECT * FROM canview_cv WHERE id_user=$id";
 $infocv = $wpdb->get_results(
     $user
 );
-
-
 
 $idcv= $infocv[0]->id;
 

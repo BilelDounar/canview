@@ -3,6 +3,8 @@
  * Template Name: EspaceRecruteur
  */
 
+securisationRecruteur();
+
 global $wpdb;
 $cv = $wpdb->get_results(
     "SELECT * FROM canview_cv;
@@ -16,7 +18,7 @@ get_header();
         <div class="listing">
             <?php foreach($cv as $i){ ?>
                 <div class="cv">
-                    <a href="<?php echo path('profil detail') ?>?id=<?php echo $i->id_user ?>">
+                    <a href="<?php echo path('profil details') ?>?id=<?php echo $i->id_user ?>">
                         <div class="photo">
                             <img src="<?= path('/') .'app/uploads/user_profil/'. $i->photo ?>" alt="">
                         </div>
