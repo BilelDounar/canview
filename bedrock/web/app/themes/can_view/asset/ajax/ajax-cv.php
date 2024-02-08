@@ -1,8 +1,6 @@
 <?php
 $vendor_dir = rtrim(WP_CONTENT_DIR, '/') . '/vendor';
 
-
-
 require 'C:\xampp\htdocs\projet3\canview\bedrock\vendor/phpmailer/phpmailer/src/PHPMailer.php';
 require 'C:\xampp\htdocs\projet3\canview\bedrock\vendor/phpmailer/phpmailer/src/SMTP.php';
 require 'C:\xampp\htdocs\projet3\canview\bedrock\vendor/phpmailer/phpmailer/src/Exception.php';
