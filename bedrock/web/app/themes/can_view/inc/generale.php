@@ -95,6 +95,12 @@ function can_view_scripts()
         // wp_enqueue_style('style_all_form', get_template_directory_uri() . '/public/asset/dist/css/allform.bundle.css', array(), _S_VERSION);
 
     }
+
+    if(is_page_template('template-profilDetails.php')) {
+        wp_enqueue_script('profil-js', get_template_directory_uri() . '/asset/js/profil.js', array(),_S_VERSION, true);
+
+    }
+
 }
 
 add_action('wp_enqueue_scripts', 'can_view_scripts');
