@@ -32,12 +32,12 @@ async function getConnexionData(){
     });
     let data = await response.json();
     console.log(data);
-    error_login.innerText='';
+    error_login.innerHTML='';
     if(data.success){
         document.location.href= MYSCRIPT.home;
     }else{
         if(data.errors.login != null){
-            error_login.innerText=data.errors.login;
+            error_login.innerHTML=data.errors.login;
         }
     }
 }

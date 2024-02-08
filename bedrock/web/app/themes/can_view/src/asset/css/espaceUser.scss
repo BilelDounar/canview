@@ -22,10 +22,15 @@
     .profil{
       display: flex;
       justify-content: space-between;
+      align-items: center;
       .photoProfil{
+        display: flex;
+        align-items: center;
+        padding: 2rem 1rem;
         width: 600px;
         .photo{
-          width: 65%;
+          object-fit: contain;
+          max-width: 220px;
           margin: 0 auto;
         }
       }

@@ -12,6 +12,7 @@ $cv = $wpdb->get_results(
 ",
 );
 
+
 if(empty($cv)){
     //redirection a faire vers la création de cv
     header('Location: '.path('all-form').'?signon=on');
@@ -29,9 +30,7 @@ get_header();
                 <div class="separator"></div>
                 <div class="profil">
                     <div class="photoProfil">
-                        <div class="photo">
-                            <img src="<?= path('/') .'app/uploads/user_profil/' . $cv[0]->photo ?>" alt="">
-                        </div>
+                        <img class="photo"  src="<?= path('/') .'app/uploads/user_profil/' . $cv[0]->photo ?>" alt="">
                     </div>
                     <div class="content">
                         <div class="info">
