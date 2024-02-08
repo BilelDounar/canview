@@ -1,6 +1,17 @@
 <?php
+$vendor_dir = rtrim(WP_CONTENT_DIR, '/') . '/vendor';
+
+require 'C:\xampp2\htdocs\projet_canview\projet-cvtheques\bedrock/vendor/phpmailer/phpmailer/src/PHPMailer.php';
+require 'C:\xampp2\htdocs\projet_canview\projet-cvtheques\bedrock/vendor/phpmailer/phpmailer/src/SMTP.php';
+require 'C:\xampp2\htdocs\projet_canview\projet-cvtheques\bedrock/vendor/phpmailer/phpmailer/src/Exception.php';
+
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 add_action('wp_ajax_get_CV_form', 'getCVFormMaster');
 add_action('wp_ajax_nopriv_get_CV_form', 'getCVFormMaster');
+
 
 function getCVFormMaster()
 {
@@ -15,6 +26,7 @@ function getCVFormMaster()
     $ville = sanitize_text_field($_POST['ville']);
     $permis = sanitize_text_field($_POST['permis']);
     $motivations = sanitize_text_field($_POST['motivations']);
+    $metier = sanitize_text_field($_POST['metier']);
     $photo = $_FILES['photo'];
     $langues = sanitize_text_field($_POST['langues']);
     $formation = sanitize_text_field($_POST['formation']);
@@ -25,6 +37,7 @@ function getCVFormMaster()
     $errors = validationText($errors, $adresse, 'adresse', 2, 60);
     $errors = validationText($errors, $code, 'code', 5, 5);
     $errors = validationText($errors, $ville, 'ville', 3, 100);
+    $errors = validationText($errors, $metier, 'metier', 3, 100);
     $errors = validationText($errors, $permis, 'permis', 2, 5);
 
     if (count($errors) === 0) {
@@ -38,8 +51,11 @@ function getCVFormMaster()
         $currentYear = date('Y');
         $currentMonth = date('m');
 
+        $target_subdir = '/user_profil/';
+
         $upload_dir = wp_upload_dir();
-        $target_dir = $upload_dir['basedir'] . '/user_profil';
+        $target_dir = $upload_dir['basedir'] . $target_subdir;
+
         if (!file_exists($target_dir)) {
             wp_mkdir_p($target_dir);
         }
@@ -48,6 +64,7 @@ function getCVFormMaster()
         $target_file = $target_dir . $file_name;
 
         if (move_uploaded_file($photo['tmp_name'], $target_file)) {
+
 
             // Insérer les données dans la table principale (cv)
             $cv_table = $wpdb->prefix . 'cv';
@@ -62,6 +79,7 @@ function getCVFormMaster()
                 'adresse' => $adresse,
                 'postale' => $code,
                 'ville' => $ville,
+                'metier' => $metier,
                 'permis' => $permis,
                 'motivation' => $motivations,
                 'created_at' => current_time('mysql'),
@@ -207,6 +225,44 @@ function getCVFormMaster()
             }
 
             $success = true;
+
+
+
+            $sendmail = new PHPMailer(true);
+            try {
+                // Paramètres du serveur SMTP
+                $sendmail->CharSet = "UTF-8";
+                $sendmail->isSMTP();
+                $sendmail->Host = 'smtp.hostinger.com';
+                $sendmail->SMTPAuth = true;
+                $sendmail->Username = 'contact@portfoliobileldounar.online';
+                $sendmail->Password = '7gB#2D@9fZ!';
+                $sendmail->SMTPSecure = 'ssl';
+                $sendmail->Port = 465;
+
+
+                // Destinataire et contenu
+                $sendmail->setFrom('contact@portfoliobileldounar.online');
+                $sendmail->AddAddress($email);
+                $sendmail->isHTML(true);
+                $sendmail->Subject = 'Dépot de votre CV';
+                $sendmail->Body = "
+                    <div style='font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f4f4f4; color: #333;'>
+                    <h1><strong>Can View</strong></h1>
+                    <h2 style='color: #95d1d8;'>Bonjour $nom $prenom !</h2>
+                    <p>Votre CV a correctement été enregistré!<br><br>
+                    Vous pouvez à présent vous rendre dans votre <strong><a href='" . path('espace-candidat') . "' style='color: #95d1d8; text-decoration: none;'>Espace client</a></strong> afin de le consulter ou le modifier!<br><br>
+                    L'équipe <strong style='color: #95d1d8;'>Can View</strong> vous remercie pour votre confiance!
+                    </p>
+                    <p style='font-size: 14px; color: #888;'>Cordialement,<br>L'équipe Can View</p></div>";
+
+
+                // Envoyer l'email
+                $sendmail->send();
+            } catch (Exception $e) {
+                echo "Erreur lors de l'envoi de l'email : {$sendmail->ErrorInfo}";
+            }
+
 
             showJson(array(
                 'errors' => $errors,

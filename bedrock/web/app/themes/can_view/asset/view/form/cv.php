@@ -16,7 +16,6 @@ $langues = $wpdb->get_results($query_langues, ARRAY_A);
 $competences = $wpdb->get_results($query_skill, ARRAY_A);
 $competencestech = $wpdb->get_results($query_hardskill, ARRAY_A);
 
-
 ?>
 
 <div class="all_form_bar_horizontal">
@@ -69,12 +68,10 @@ $competencestech = $wpdb->get_results($query_hardskill, ARRAY_A);
             </div>
 
             <div class="inline_form ">
-
-                <div class="form_textarea">
-                    <div class="coolinput coolinput_large">
-                        <label for="motivations" class="text">Vos Motivations</label>
-                        <textarea name="motivations" id="motivations" class="input"></textarea>
-                    </div>
+                <div class="coolinput coolinput_large">
+                    <label for="metier" class="text">Votre métier </label>
+                    <input type="text" name="metier" id="metier" class="input">
+                    <span id="error_metier"></span>
                 </div>
             </div>
             <div class="inline_form ">

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying the footer
  *
@@ -18,9 +19,15 @@
     </div>
     <div class="fine-print">
         <ul>
-            <li>Main</li>
-            <li>Concept</li>
-            <li>Squad</li>
+            <a href="<?= path() ?>">
+                <li>Main</li>
+            </a>
+            <a href="<?= path() ?>">
+                <li>Concept</li>
+            </a>
+            <a href="<?= path('/') ?>#statistics">
+                <li>Qui Sommes nous</li>
+            </a>
         </ul>
         <p>All rights reserved 2024</p>
     </div>
@@ -34,4 +41,5 @@
 <?php wp_footer(); ?>
 
 </body>
+
 </html>

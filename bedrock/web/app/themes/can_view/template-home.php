@@ -13,11 +13,11 @@ get_header();
             <div class="content">
                 <div class="left_content">
                     <div class="texte">
-                        <h1>Showcase Your Talents</h1>
+                        <h1>Votre future vous fait de l'oeil</h1>
                         <p>Déposez votre CV et trouvez un job!</p>
                     </div>
                     <div class="btn">
-                        <a href="#">Créer mon CV</a>
+                        <a href="<?php echo path('all-form') ?>?signon=on">Créer mon CV</a>
                     </div>
 
 
@@ -72,7 +72,7 @@ get_header();
                             </div>
                         </div>
                         <div class="texte">
-                            <a href="">Déposez votre CV</a>
+                            <a href="<?php echo path('all-form') ?>?signon=on">Déposez votre CV</a>
                         </div>
                     </div>
                     <div class="info_3"><div class="titre">

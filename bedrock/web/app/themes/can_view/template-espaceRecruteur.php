@@ -18,7 +18,7 @@ get_header();
                 <div class="cv">
                     <a href="<?php echo path('cvpdf') ?>?id=<?php echo $i->id_user ?>">
                         <div class="photo">
-                            <img src="<?php echo asset('img/photo_profil.jpg') ?>" alt="">
+                            <img src="<?= path('/') .'app/uploads/user_profil/'. $i->photo ?>" alt="">
                         </div>
                         <div class="content">
                             <div class="info1">
