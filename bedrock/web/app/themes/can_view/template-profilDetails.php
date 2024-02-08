@@ -4,7 +4,61 @@
  */
 
 require_once 'functions.php';
+global $wpdb;
+$id = $_GET['id'];
+$user="SELECT * FROM canview_cv WHERE id_user=$id";
+$infocv = $wpdb->get_results(
+    $user
+);
 
+$idcv= $infocv[0]->id;
+
+$hs="SELECT ch.hardskills FROM canview_passerelle_hardskills AS pas
+             LEFT JOIN canview_hardskills AS ch
+             ON pas.id_hardskills=ch.id
+             WHERE pas.id_cv = $idcv;
+             ";
+
+$hardskills = $wpdb->get_results(
+    $hs
+);
+
+$ss="SELECT cs.softskills FROM canview_passerelle_softskills AS pas
+             LEFT JOIN canview_softskills AS cs
+             ON pas.id_softskills=cs.id
+             WHERE pas.id_cv = $idcv;
+             ";
+
+$softskills = $wpdb->get_results(
+    $ss
+);
+
+$l="SELECT cl.langue FROM canview_passerelle_langue AS pas
+             LEFT JOIN canview_langue AS cl
+             ON pas.id_langue=cl.id
+             WHERE pas.id_cv = $idcv;
+             ";
+
+$langue = $wpdb->get_results(
+    $l
+);
+
+$for="SELECT formation FROM canview_formation WHERE id_cv=$idcv";
+$formation = $wpdb->get_results(
+    $for
+);
+
+$exp="SELECT experience FROM canview_experience WHERE id_cv=$idcv";
+$experience = $wpdb->get_results(
+    $exp
+);
+
+$loi="SELECT loisir FROM canview_loisir WHERE id_cv=$idcv";
+$loisir = $wpdb->get_results(
+    $loi
+);
+
+debug($hardskills);
 
 
 get_header();
