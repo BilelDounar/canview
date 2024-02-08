@@ -52,7 +52,7 @@
                     if ($user->roles[0] == 'subscriber') {
                     ?>
                         <li><a href="<?php echo path('espace-candidat') ?>">Mon espace candidat</a></li>
-                        <li><a href="<?php echo path('CV') ?>">Mon curiculum vitae</a></li>
+                        <li><a href="<?php echo path('profil details') ?>">Mon curiculum vitae</a></li>
                     <?php } else { ?>
                         <li><a href="<?php echo path('espace-recruteur') ?>">Mon espace recruteur</a></li>
                     <?php } ?>
