@@ -5,20 +5,28 @@
 
 require_once 'functions.php';
 
-
 global $wpdb;
-$id = $_GET['id'];
+$id_user=wp_get_current_user();
+if($id_user->roles[0]!='subscriber'){
+    $id=get_current_user_id();
+}else{
+    $id = $_GET['id'];
+}
+
 $user="SELECT * FROM canview_cv WHERE id_user=$id";
 $infocv = $wpdb->get_results(
     $user
 );
+
+
 
 $idcv= $infocv[0]->id;
 
 $hs="SELECT ch.hardskills FROM canview_passerelle_hardskills AS pas
              LEFT JOIN canview_hardskills AS ch
              ON pas.id_hardskills=ch.id
-             WHERE pas.id_cv = $idcv;
+             WHERE pas.id_cv = $idcv
+             LIMIT 14;
              ";
 
 $hardskills = $wpdb->get_results(
@@ -28,39 +36,29 @@ $hardskills = $wpdb->get_results(
 $ss="SELECT cs.softskills FROM canview_passerelle_softskills AS pas
              LEFT JOIN canview_softskills AS cs
              ON pas.id_softskills=cs.id
-             WHERE pas.id_cv = $idcv;
+             WHERE pas.id_cv = $idcv
+             LIMIT 14;
              ";
 
 $softskills = $wpdb->get_results(
     $ss
 );
 
-$l="SELECT cl.langue FROM canview_passerelle_langue AS pas
-             LEFT JOIN canview_langue AS cl
-             ON pas.id_langue=cl.id
-             WHERE pas.id_cv = $idcv;
-             ";
 
-$langue = $wpdb->get_results(
-    $l
-);
-
-$for="SELECT formation FROM canview_formation WHERE id_cv=$idcv";
-$formation = $wpdb->get_results(
+$for="SELECT formation FROM canview_formation WHERE id_cv=$idcv LIMIT 8 ;";
+$formations = $wpdb->get_results(
     $for
 );
 
-$exp="SELECT experience FROM canview_experience WHERE id_cv=$idcv";
-$experience = $wpdb->get_results(
+$exp="SELECT experience FROM canview_experience WHERE id_cv=$idcv LIMIT 8;";
+$experiences = $wpdb->get_results(
     $exp
 );
 
-$loi="SELECT loisir FROM canview_loisir WHERE id_cv=$idcv";
-$loisir = $wpdb->get_results(
+$loi="SELECT loisir FROM canview_loisir WHERE id_cv=$idcv LIMIT 14";
+$loisirs = $wpdb->get_results(
     $loi
 );
-
-debug($softskills);
 
 
 get_header();
@@ -83,12 +81,12 @@ get_header();
         <div class="infos">
             <div class="infos_principal">
                 <div class="photo">
-                    <img src="<?php echo asset('img/photo_profil.jpg') ?>" alt="photo de profil">
+                    <img src="<?= path('/') .'app/uploads/user_profil/' . $infocv[0]->photo ?>" alt="photo de profil">
                 </div>
                 <div class="text">
                     <div class="titres">
-                        <h2>nom prénom</h2>
-                        <h3>Métier</h3>
+                        <h2><?php echo $infocv[0]->prenom .' '.strtoupper($infocv[0]->nom)?></h2>
+                        <h3><?php echo $infocv[0]->metier ?></h3>
                     </div>
                     <div class="liens">
                         <a href="https://github.com/"><img src="<?php echo asset('img/github-icon.svg')?>" alt=""></a>
@@ -99,7 +97,7 @@ get_header();
                     </div>
                     <div class="separator"></div>
                     <div class="lien_pdf">
-                        <a href="<?php echo path('cvpdf') ?>?id=<?php echo $_GET['id']; ?>">Télécharger le CV</a>
+                        <a href="<?php echo path('cvpdf') ?>?id=<?php echo $id ?>">Télécharger le CV</a>
                     </div>
                 </div>
             </div>
@@ -110,32 +108,32 @@ get_header();
                         <div class="separator"></div>
                     </div>
                     <div class="texte">
-                        <p>A la base j’étais juste un jedi tres sympa formé par Obi-wan Kenobi mais Palpatine est venu me faire la discute et en sah, le côté obscure... ça vaaaaaaaaaa, c’est pas si terrible.</p>
+                        <p><?php echo $infocv[0]->motivation ?></p>
                         <table>
                             <tr>
                                 <td class="titre">Date de naissance </td>
                                 <td>:</td>
-                                <td>30/05/2004</td>
+                                <td><?php echo date('d/m/Y', strtotime($infocv[0]->anniversaire)) ?></td>
                             </tr>
                             <tr>
                                 <td class="titre">Téléphone </td>
                                 <td>:</td>
-                                <td>0647314056</td>
+                                <td><?php echo $infocv[0]->telephone ?></td>
                             </tr>
                             <tr>
                                 <td class="titre">Email </td>
                                 <td>:</td>
-                                <td>darkvador@gmail.com</td>
+                                <td><?php echo $infocv[0]->mail ?></td>
                             </tr>
                             <tr>
                                 <td class="titre">Adresse : </td>
                                 <td>:</td>
-                                <td>Etoile de la mort</td>
+                                <td><?php echo $infocv[0]->adresse.' '.$infocv[0]->postale.', '.$infocv[0]->ville ?></td>
                             </tr>
                             <tr>
                                 <td class="titre">Permis </td>
                                 <td>:</td>
-                                <td>Oui</td>
+                                <td><?php echo $infocv[0]->permis ?></td>
                             </tr>
                         </table>
                     </div>
@@ -152,13 +150,9 @@ get_header();
                                 <h2>Formation</h2>
                             </div>
                             <div class="content">
-                                <p>Obiwan Kenobi <br>(2008 - 2016)</p>
-                                <p>Obiwan Kenobi <br>(2008 - 2016)</p>
-                                <p>Obiwan Kenobi <br>(2008 - 2016)</p>
-                                <p>Obiwan Kenobi <br>(2008 - 2016)</p>
-                                <p>Obiwan Kenobi <br>(2008 - 2016)</p>
-                                <p>Obiwan Kenobi <br>(2008 - 2016)</p>
-                                <p>Obiwan Kenobi <br>(2008 - 2016)</p>
+                                <?php foreach ($formations as $formation){ ?>
+                                    <li><?php echo $formation->formation ?></li>
+                                <?php } ?>
                             </div>
                         </div>
                         <div class="separator"></div>
@@ -168,13 +162,9 @@ get_header();
                                 <h2>Experirence</h2>
                             </div>
                             <div class="content">
-                                <p>Fight vs Comte Doku <br>(2015 - 2016)</p>
-                                <p>Fight vs Comte Doku <br>(2015 - 2016)</p>
-                                <p>Fight vs Comte Doku <br>(2015 - 2016)</p>
-                                <p>Fight vs Comte Doku <br>(2015 - 2016)</p>
-                                <p>Fight vs Comte Doku <br>(2015 - 2016)</p>
-                                <p>Fight vs Comte Doku <br>(2015 - 2016)</p>
-                                <p>Fight vs Comte Doku <br>(2015 - 2016)</p>
+                                <?php foreach ($experiences as $experience){ ?>
+                                    <li><?php echo $experience->experience ?></li>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
@@ -185,10 +175,9 @@ get_header();
                         <div class="separator"></div>
                     </div>
                     <div class="texte">
-                        <li>piano</li>
-                        <li>paddle</li>
-                        <li>pétanque</li>
-
+                        <?php foreach ($loisirs as $loisir){ ?>
+                            <li><?php echo $loisir->loisir ?></li>
+                        <?php } ?>
                     </div>
                 </div>
                 <div class="hardskills" style="display: none">
@@ -197,10 +186,9 @@ get_header();
                         <div class="separator"></div>
                     </div>
                     <div class="texte">
-                        <li>je suis COMPETANT</li>
-                        <li>paddle</li>
-                        <li>pétanque</li>
-
+                        <?php foreach ($hardskills as $hardskill){ ?>
+                            <li><?php echo $hardskill->hardskills ?></li>
+                        <?php } ?>
                     </div>
                 </div>
                 <div class="softskills" style="display: none">
@@ -209,9 +197,9 @@ get_header();
                         <div class="separator"></div>
                     </div>
                     <div class="texte">
-                        <li>je suis COMPETANT</li>
-                        <li>paddle</li>
-                        <li>pétanque</li>
+                        <?php foreach ($softskills as $softskill){ ?>
+                            <li><?php echo $softskill->softskills ?></li>
+                        <?php } ?>
 
                     </div>
                 </div>

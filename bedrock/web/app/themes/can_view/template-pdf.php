@@ -32,9 +32,6 @@ $id = $_GET['id'];
 //       WHERE cv.id_user=$id
 //;";
 $user="SELECT * FROM canview_cv WHERE id_user=$id";
-
-//       WHERE cv.id_user=$id;";
-
 $infocv = $wpdb->get_results(
     $user
 );
