@@ -184,7 +184,16 @@ function securisationCandidat () {
 
 function securisationRecruteur () {
     $user=wp_get_current_user();
-    if(!is_user_logged_in()||$user->roles[0]!='recruteur') {
+    if(!is_user_logged_in()||$user->roles[0]!='Recruteur') {
+        header('Location: '.path('403'));
+    }
+}
+
+function securisationcv() {
+    $user=wp_get_current_user();
+    if($user->roles[0]!='Recruteur'&&$user->roles[0]!='subscriber') {
+        header('Location: '.path('403'));
+    }elseif ($user->roles[0]!='Recruteur'&&$user->ID!=$_GET['id']){
         header('Location: '.path('403'));
     }
 }

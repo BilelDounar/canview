@@ -6,6 +6,8 @@
 require_once 'functions.php';
 
 global $metaHome;
+
+
 get_header();
 ?>
     <section id="intro">
@@ -17,7 +19,16 @@ get_header();
                         <p>Déposez votre CV et trouvez un job!</p>
                     </div>
                     <div class="btn">
-                        <a href="<?php echo path('all-form') ?>?signon=on">Créer mon CV</a>
+                        <?php if(is_user_logged_in()){
+                            $user = wp_get_current_user();
+                            if($user->roles[0] == 'subscriber'){?>
+                                <a href="<?php echo path('profil details') ?>?id=<?php echo $user->ID ?>">Voir mon CV</a>
+                            <?php }elseif ($user->roles[0] == 'Recruteur'){ ?>
+                                <a href="<?php echo path('espace-recruteur') ?>">Voir les CV</a>
+                            <?php }
+                            }else{ ?>
+                            <a href="<?php echo path('all-form') ?>">Créer mon CV</a>
+                        <?php } ?>
                     </div>
 
 
@@ -72,7 +83,16 @@ get_header();
                             </div>
                         </div>
                         <div class="texte">
-                            <a href="<?php echo path('all-form') ?>?signon=on">Déposez votre CV</a>
+                        <?php if(is_user_logged_in()){
+                            $user = wp_get_current_user();
+                            if($user->roles[0] == 'subscriber'){?>
+                                <a href="<?php echo path('espace-candidat') ?>">Déposez votre CV</a>
+                            <?php }elseif($user->roles[0] == 'Recruteur'){ ?>
+                                <a href="#">Déposez votre CV</a>
+                            <?php }
+                        }else{?>
+                            <a href="<?php echo path('all-form') ?>">Déposez votre CV</a>
+                        <?php } ?>
                         </div>
                     </div>
                     <div class="info_3"><div class="titre">

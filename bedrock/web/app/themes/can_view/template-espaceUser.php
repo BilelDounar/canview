@@ -12,11 +12,6 @@ $cv = $wpdb->get_results(
 ",
 );
 
-
-if(empty($cv)){
-    //redirection a faire vers la création de cv
-    header('Location: '.path('all-form').'?signon=on');
-}
 $anniversaire = new DateTime($cv[0]->anniversaire);
 $aujourdHui = new DateTime();
 $age = $aujourdHui->diff($anniversaire)->y;

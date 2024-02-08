@@ -53,7 +53,7 @@
                     ?>
                         <li><a href="<?php echo path('espace-candidat') ?>">Mon espace candidat</a></li>
                         <li><a href="<?php echo path('profil details') ?>?id=<?php echo $user->ID ?>">Mon curiculum vitae</a></li>
-                    <?php } else { ?>
+                    <?php } elseif($user->roles[0] == 'Recruteur') { ?>
                         <li><a href="<?php echo path('espace-recruteur') ?>">Mon espace recruteur</a></li>
                     <?php } ?>
 
