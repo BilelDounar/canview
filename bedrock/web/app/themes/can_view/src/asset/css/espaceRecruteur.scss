@@ -15,7 +15,6 @@
     .listing{
       display: flex;
       justify-content: space-between;
-      flex-wrap: wrap;
       padding: 1rem 0;
       .cv{
         width: 48%;
@@ -28,7 +27,8 @@
           border-radius: 10px;
           transition: all 0.3s;
           .photo {
-            width: 150px;
+            max-width: 150px;
+            width: 100%;
             background-color: grey;
           }
           .content {
