@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
             error_global.innerText = data.userCreationErrors;
 
             if (data.userCreationErrors == null) {
+
                 const urlParams = new URLSearchParams(window.location.search);
                 window.location.href = urlParams + '?signon=on';
 
