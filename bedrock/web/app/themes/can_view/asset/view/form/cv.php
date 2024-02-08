@@ -79,6 +79,7 @@ $competencestech = $wpdb->get_results($query_hardskill, ARRAY_A);
                     <div class="coolinput coolinput_large">
                         <label for="motivations" class="text">Vos Motivations</label>
                         <textarea name="motivations" id="motivations" class="input"></textarea>
+                        <span id="error_motivations"></span>
                     </div>
                 </div>
             </div>
@@ -147,9 +148,9 @@ $competencestech = $wpdb->get_results($query_hardskill, ARRAY_A);
                 <div class="coolinput box_form ">
                     <label for="photo" class="text box_title">Votre Photo</label>
                     <div class="box_datalist">
-                        <input type="file" class="input-file" name="photo" id="photo" accept="image/jpg, image/png, image/jpeg">
+                        <input type="file" class="input-file" name="photo" id="photo" accept="image/jpg, image/jpeg">
                         <span id="error_photo"></span>
-                        <p class="browse"><strong>Formats supportés :</strong> png, .jpg, .jpeg.</p>
+                        <p class="browse"><strong>Formats supportés :</strong>.jpg, .jpeg.</p>
 
                     </div>
                 </div>

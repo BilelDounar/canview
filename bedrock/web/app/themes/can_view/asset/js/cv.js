@@ -381,7 +381,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }, 1000);
             }, 100);
 
-
+            localStorage.clear();
 
         } else {
             if (data.errors.tel != null) {

@@ -39,6 +39,7 @@ function getCVFormMaster()
     $errors = validationText($errors, $ville, 'ville', 3, 100);
     $errors = validationText($errors, $metier, 'metier', 3, 100);
     $errors = validationText($errors, $permis, 'permis', 2, 5);
+    $errors = validationText($errors, $motivations, 'motivations', 10, 550);
 
     if (count($errors) === 0) {
         global $wpdb;
