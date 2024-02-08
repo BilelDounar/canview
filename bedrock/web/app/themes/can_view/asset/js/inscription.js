@@ -38,8 +38,8 @@ document.addEventListener('DOMContentLoaded', function () {
             error_global.innerText = data.userCreationErrors;
 
             if (data.userCreationErrors == null) {
-                
-                window.location.href = MYSCRIPT.home + 'all-form-fisrt-time?signon=on';
+                const urlParams = new URLSearchParams(window.location.search);
+                window.location.href = urlParams + '?signon=on';
 
                 var premiere_etape = document.querySelector('.premiere_etape');
                 var deuxieme_etape = document.querySelector('.deuxieme_etape');
@@ -75,7 +75,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Vérifier si le paramètre 'signon' est présent dans l'URL
     const urlParams = new URLSearchParams(window.location.search);
     const signonParam = urlParams.get('signon');
 

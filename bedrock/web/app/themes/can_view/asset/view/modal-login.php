@@ -8,14 +8,24 @@
                 <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
             </header>
             <form id="form_login" action="" method="post" novalidate>
-                <label for="mail">Identifiant ou Email</label>
-                <input type="text" id="mail" name="mail">
-                <span class="error" id="error_login" ></span>
 
-                <label for="password">Mot de passe</label>
-                <input type="password" id="password" name="password">
+                <div class="coolinput ">
+                    <label for="mail" class="text">Identifiant ou Email</label>
+                    <input type="text" id="mail" name="mail" class="input">
+                    <span class="error" id="error_login"></span>
+                </div>
 
-                <input id='submit_login' type="submit">
+
+                <div class="coolinput ">
+                    <label for="password" class="text">Mot de passe</label>
+                    <input type="password" id="password" name="password" class="input">
+                    <span id="error_naiss"></span>
+                </div>
+
+                <div class="inline_form ">
+                    <input type="submit" class="input" value="Envoyer">
+                </div>
+
             </form>
         </div>
     </div>

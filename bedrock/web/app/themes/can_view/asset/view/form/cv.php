@@ -75,6 +75,14 @@ $competencestech = $wpdb->get_results($query_hardskill, ARRAY_A);
                 </div>
             </div>
             <div class="inline_form ">
+                <div class="form_textarea">
+                    <div class="coolinput coolinput_large">
+                        <label for="motivations" class="text">Vos Motivations</label>
+                        <textarea name="motivations" id="motivations" class="input"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="inline_form ">
 
                 <div class="coolinput box_form ">
                     <label for="motivations" class="text box_title">Vos Langues</label>
