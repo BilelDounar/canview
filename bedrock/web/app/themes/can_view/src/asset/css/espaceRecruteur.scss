@@ -2,12 +2,14 @@
 #espaceRecruteur{
   .wrap{
     h1{
+      margin-left: 1rem;
       border-radius: 10px;
       text-align: center;
       padding: 1rem;
       background-color: white;
       color: black;
-      width: 300px;
+      max-width: 300px;
+      width: 100%;
       span{
         color: v.$bleu-primary;
       }
@@ -43,7 +45,7 @@
               p{
                 color: black;
                 font-weight:  bold;
-                padding: 0.5rem 0;
+
               }
             }
 
@@ -60,6 +62,84 @@
           .info1{
             p{
               color: white;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1064px) {
+  #espaceRecruteur{
+    .wrap {
+      .listing{
+        flex-direction: column;
+        align-items: center;
+        .cv {
+          width: 85%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 620px) {
+  #espaceRecruteur {
+    .wrap {
+      .listing {
+        .cv {
+          a {
+            .info1 {
+              p{
+                font-size: 18px;
+              }
+            }
+            .metier {
+              p{
+                font-size: 14px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 590px) {
+  #espaceRecruteur {
+    .wrap {
+      .listing {
+        .cv {
+          a {
+            .info1 {
+              flex-direction: column;
+              p{
+                font-size: 16px;
+              }
+            }
+            .metier {
+              p{
+                font-size: 12px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 490px) {
+  #espaceRecruteur {
+    .wrap {
+      .listing {
+        .cv {
+          a {
+            .photo{
+              max-width: 121.6px;
             }
           }
         }
