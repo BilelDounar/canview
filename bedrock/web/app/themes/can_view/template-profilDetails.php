@@ -2,6 +2,11 @@
 /**
  * Template Name: profildetails
  */
+
+require_once 'functions.php';
+
+
+
 get_header();
 ?>
 <section id="profil_details">
@@ -26,7 +31,7 @@ get_header();
                 </div>
                 <div class="text">
                     <div class="titres">
-                        <h2>Nom prénom</h2>
+                        <h2>nom prénom</h2>
                         <h3>Métier</h3>
                     </div>
                     <div class="liens">
@@ -38,7 +43,7 @@ get_header();
                     </div>
                     <div class="separator"></div>
                     <div class="lien_pdf">
-                        <a href="">Télécharger le CV</a>
+                        <a href="<?php echo path('cvpdf') ?>?id=<?php echo $_GET['id']; ?>">Télécharger le CV</a>
                     </div>
                 </div>
             </div>
