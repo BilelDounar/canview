@@ -40,7 +40,7 @@ get_header();
                         </div>
                         <div class="action">
                             <ul>
-                                <li><a class="voir" href="<?php echo path('profil-details') ?>?id=<?php echo $id ?>">Voir le CV</a></li>
+                                <li><a class="voir" href="<?php echo path('profil details') ?>?id=<?php echo $id ?>">Voir le CV</a></li>
                                 <li><a class="telecharge" href="<?php echo path('cvpdf') ?>?id=<?php echo $id ?>">Télécharger le CV</a></li>
                                 <li><a class="modif" href="">Modifier le CV</a></li>
                             </ul>
