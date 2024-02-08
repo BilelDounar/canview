@@ -1,10 +1,6 @@
 <?php
 /**
- * The template for displaying all single posts
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
- *
- * @package canview
+ * Template Name: profildetails
  */
 get_header();
 ?>
@@ -12,15 +8,15 @@ get_header();
     <div class="wrap">
         <div class="sidebar">
             <div class="elements">
-                <a href=""><img src="<?php echo asset('img/profil-icon.svg') ?>" alt="">Profil</a>
+                <a href="#" class="btn_profil"><img src="<?php echo asset('img/profil-icon.svg') ?>" alt="">Profil</a>
                 <div class="separator"></div>
-                <a href=""><img src="<?php echo asset('img/formation-icon.svg') ?>" alt="">Formation & expérience</a>
+                <a href="#" class="btn_formation"><img src="<?php echo asset('img/formation-icon.svg') ?>" alt="">Formation & expérience</a>
                 <div class="separator"></div>
-                <a href=""><img src="<?php echo asset('img/puzzle-icon.svg') ?>" alt="">Loisirs</a>
+                <a href="#" class="btn_loisirs"><img src="<?php echo asset('img/puzzle-icon.svg') ?>" alt="">Loisirs</a>
                 <div class="separator"></div>
-                <a href=""><img src="<?php echo asset('img/brain-icon.png') ?>" alt="">Hardskills</a>
+                <a href="#" class="btn_hardskills"><img src="<?php echo asset('img/brain-icon.png') ?>" alt="">Hardskills</a>
                 <div class="separator"></div>
-                <a href=""><img src="<?php echo asset('img/lotus-icon.png') ?>" alt="">Softskills</a>
+                <a href="#" class="btn_softskills"><img src="<?php echo asset('img/lotus-icon.png') ?>" alt="">Softskills</a>
             </div>
         </div>
         <div class="infos">

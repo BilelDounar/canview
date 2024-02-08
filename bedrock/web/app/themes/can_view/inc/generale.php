@@ -80,5 +80,11 @@ function can_view_scripts()
         wp_enqueue_script('flexslider-js', get_template_directory_uri() . '/asset/flexslider/jquery.flexslider-min.js', array(),_S_VERSION, true);
         wp_enqueue_script('home-js', get_template_directory_uri() . '/asset/js/home.js', array(),_S_VERSION, true);
     }
+
+    if(is_page_template('template-profilDetails.php')) {
+        wp_enqueue_script('profil-js', get_template_directory_uri() . '/asset/js/profil.js', array(),_S_VERSION, true);
+
+    }
+
 }
 add_action('wp_enqueue_scripts', 'can_view_scripts');
