@@ -6,6 +6,7 @@
  *
  * @package can_view
  */
+header('Location: '.path('403'));
 
 get_header();
 ?>

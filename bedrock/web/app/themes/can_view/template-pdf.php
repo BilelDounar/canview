@@ -30,7 +30,6 @@ $id = $_GET['id'];
 //       ON pl.id_langue=cl.id
 //       LEFT JOIN canview_loisir AS clo
 //       ON cv.id=clo.id_cv
-
 //       WHERE cv.id_user=$id
 //;";
 $user="SELECT * FROM canview_cv WHERE id_user=$id";
