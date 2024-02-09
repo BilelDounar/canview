@@ -6,7 +6,6 @@ module.exports = {
     devtool: 'inline-source-map',
     entry: {
         global: './src/index.js',
-
         allform: './src/index.js',
         style: './src/index.js',
 

@@ -18,6 +18,7 @@
       display: flex;
       justify-content: space-between;
       padding: 1rem 0;
+      flex-wrap: wrap;
       .cv{
         width: 48%;
         margin: 0.5rem;
@@ -29,7 +30,7 @@
           border-radius: 10px;
           transition: all 0.3s;
           .photo {
-            width: 100%;
+            width: 140px;
             background-color: grey;
             img{
               object-fit: contain;
