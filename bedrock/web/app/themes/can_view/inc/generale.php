@@ -104,3 +104,21 @@ function can_view_scripts()
 add_action('wp_enqueue_scripts', 'can_view_scripts');
 
 add_role('Recruteur', 'Recruteur', get_role('administrator')->capabilities);
+
+
+function masquer_barre_admin_utilisateur($show)
+{
+    // Vérifiez si l'utilisateur est connecté
+    if (is_user_logged_in()) {
+        // Obtenez l'objet utilisateur actuel
+        $utilisateur_actuel = wp_get_current_user();
+
+        // Vérifiez le rôle de l'utilisateur (par exemple, si c'est un nouvel utilisateur)
+        if (in_array('subscriber', (array) $utilisateur_actuel->roles)) {
+            return false; // Masquer la barre d'administration pour les utilisateurs avec le rôle 'subscriber'
+        }
+    }
+
+    return $show; // Afficher la barre d'administration pour les autres utilisateurs
+}
+add_filter('show_admin_bar', 'masquer_barre_admin_utilisateur');
