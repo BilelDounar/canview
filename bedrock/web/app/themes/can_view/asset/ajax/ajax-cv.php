@@ -236,16 +236,16 @@ function getCVFormMaster()
             //     // Paramètres du serveur SMTP
             //     $sendmail->CharSet = "UTF-8";
             //     $sendmail->isSMTP();
-            //     $sendmail->Host = 'smtp.hostinger.com';
+            //     $sendmail->Host = '';
             //     $sendmail->SMTPAuth = true;
-            //     $sendmail->Username = 'contact@portfoliobileldounar.online';
-            //     $sendmail->Password = '7gB#2D@9fZ!';
+            //     $sendmail->Username = '';
+            //     $sendmail->Password = '';
             //     $sendmail->SMTPSecure = 'ssl';
             //     $sendmail->Port = 465;
 
 
             //     // Destinataire et contenu
-            //     $sendmail->setFrom('contact@portfoliobileldounar.online');
+            //     $sendmail->setFrom('');
             //     $sendmail->AddAddress($email);
             //     $sendmail->isHTML(true);
             //     $sendmail->Subject = 'Dépot de votre CV';
@@ -278,7 +278,4 @@ function getCVFormMaster()
         'errors' => $errors,
         'success' => $success,
     ));
-
 }
-
-
