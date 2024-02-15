@@ -120,17 +120,17 @@ $competencestech = $wpdb->get_results($query_hardskill, ARRAY_A);
                         <label for="searchInput" class="text">Compétences :</label>
                         <div class="box_datalist" id="boxDataCompetences">
                             <select id="searchInputCompetences" name="competences" class="searchInput">
-                                <option value="" selected disabled hidden>Sélectionner une langue</option>
+                                <option value="" selected disabled hidden>Sélectionner une compétence</option>
                                 <?php if ($competences) {
-                                    // Parcourir les résultats et faire quelque chose avec chaque langue
+                                    // Parcourir les résultats et faire quelque chose avec chaque competences
                                     foreach ($competences as $competence) {
-                                        // Utiliser $langue['nom_langue'] pour accéder au nom de la langue, par exemple
+                                        // Utiliser $compétence['nom_compétence'] pour accéder au nom de la compétence, par exemple
                                         $nom_competence = $competence['softskills'];
                                         echo '<option value="' . $nom_competence . '">' . $nom_competence . '</option>';
                                     }
                                 } else {
                                     // Aucune langue trouvée
-                                    echo "Aucune langue trouvée.";
+                                    echo "Aucune compétence trouvée.";
                                 } ?>
                             </select>
                             <div class="container_button_cv">
